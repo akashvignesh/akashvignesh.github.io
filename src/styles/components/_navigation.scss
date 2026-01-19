@@ -1,0 +1,178 @@
+// ============================================
+// NAVIGATION - Nav Component Styles
+// ============================================
+
+// ============================================
+// TOP NAVIGATION
+// ============================================
+.top-nav {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  
+  // Glass effect container
+  .nav-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 9999px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+    
+    // Light theme
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    
+    // Dark theme
+    .dark & {
+      background: rgba(15, 23, 42, 0.85);
+      border-color: rgba(56, 189, 248, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+// ============================================
+// NAV LINK
+// ============================================
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  position: relative;
+  
+  // Light theme
+  color: #6b7280;
+  
+  &:hover {
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+  }
+  
+  // Active state
+  &.active {
+    color: white;
+    background: linear-gradient(135deg, #10b981, #06b6d4);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  }
+  
+  // Dark theme
+  .dark & {
+    color: #9ca3af;
+    
+    &:hover {
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+    }
+    
+    &.active {
+      background: linear-gradient(135deg, #38bdf8, #06b6d4);
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+    }
+  }
+}
+
+// ============================================
+// MOBILE MENU
+// ============================================
+.mobile-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  
+  @media (min-width: 768px) {
+    display: none;
+  }
+  
+  // Light theme
+  color: #374151;
+  
+  &:hover {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+  }
+  
+  // Dark theme
+  .dark & {
+    color: #d1d5db;
+    
+    &:hover {
+      background: rgba(56, 189, 248, 0.1);
+      color: #38bdf8;
+    }
+  }
+}
+
+.mobile-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  min-width: 200px;
+  
+  // Light theme
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  
+  // Dark theme
+  .dark & {
+    background: rgba(15, 23, 42, 0.95);
+    border-color: rgba(56, 189, 248, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  }
+  
+  .mobile-nav-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    
+    // Light theme
+    color: #374151;
+    
+    &:hover {
+      background: rgba(16, 185, 129, 0.1);
+      color: #10b981;
+    }
+    
+    &.active {
+      background: linear-gradient(135deg, #10b981, #06b6d4);
+      color: white;
+    }
+    
+    // Dark theme
+    .dark & {
+      color: #d1d5db;
+      
+      &:hover {
+        background: rgba(56, 189, 248, 0.1);
+        color: #38bdf8;
+      }
+      
+      &.active {
+        background: linear-gradient(135deg, #38bdf8, #06b6d4);
+      }
+    }
+  }
+}

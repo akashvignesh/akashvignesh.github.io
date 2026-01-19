@@ -1,0 +1,51 @@
+// ============================================
+// DEVICON - Icon Styling
+// ============================================
+
+// Only apply theme color to non-colored icons
+.devicon:not(.colored) {
+  color: var(--primary);
+}
+
+// Icon sizes
+.icon-xs { font-size: 0.75rem; }
+.icon-sm { font-size: 0.875rem; }
+.icon-base { font-size: 1rem; }
+.icon-lg { font-size: 1.25rem; }
+.icon-xl { font-size: 1.5rem; }
+.icon-2xl { font-size: 2rem; }
+.icon-3xl { font-size: 3rem; }
+.icon-4xl { font-size: 4rem; }
+
+// Icon hover effects
+.icon-hover-spin {
+  transition: transform 0.5s ease;
+  
+  &:hover {
+    transform: rotate(360deg);
+  }
+}
+
+.icon-hover-bounce {
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    animation: float 0.6s ease-in-out;
+  }
+}
+
+.icon-hover-scale {
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.icon-hover-glow {
+  transition: filter 0.3s ease;
+  
+  &:hover {
+    filter: drop-shadow(0 0 8px var(--primary));
+  }
+}

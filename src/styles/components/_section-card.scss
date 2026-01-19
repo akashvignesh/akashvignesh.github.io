@@ -1,0 +1,158 @@
+// ============================================
+// SECTION CARD STYLES
+// ============================================
+
+.section-card {
+  position: relative;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.7s ease;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  
+  @media (min-width: 640px) {
+    padding: 2rem;
+  }
+  
+  &:hover {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+  
+  &--light {
+    background: linear-gradient(to bottom right, white, rgba(236, 253, 245, 0.5), rgba(240, 253, 250, 0.3));
+    border: 1px solid rgba(16, 185, 129, 0.6);
+    box-shadow: 0 25px 50px -12px rgba(16, 185, 129, 0.1);
+  }
+  
+  &--dark {
+    background: linear-gradient(to bottom right, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    box-shadow: 0 25px 50px -12px rgba(14, 165, 233, 0.05);
+  }
+  
+  &--hidden {
+    opacity: 0;
+    transform: translateY(2.5rem);
+  }
+  
+  &--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Hover Gradient Overlay
+.section-card-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  
+  .section-card:hover & {
+    opacity: 1;
+  }
+  
+  &--light {
+    background: linear-gradient(to right, rgba(16, 185, 129, 0.1), rgba(20, 184, 166, 0.1), rgba(16, 185, 129, 0.1));
+  }
+  
+  &--dark {
+    background: linear-gradient(to right, rgba(14, 165, 233, 0.1), rgba(139, 92, 246, 0.1), rgba(14, 165, 233, 0.1));
+  }
+}
+
+// Floating Particles
+.section-card-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.section-card-particle {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: particle 6s ease-in-out infinite;
+  
+  &--light { background: #10b981; }
+  &--dark { background: #38bdf8; }
+}
+
+@keyframes particle {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 0.4;
+  }
+}
+
+// Header
+.section-card-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+// Icon
+.section-card-icon {
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  
+  .section-card:hover & {
+    transform: scale(1.1) rotate(3deg);
+  }
+  
+  &--light {
+    background: rgba(16, 185, 129, 0.2);
+    color: #059669;
+    
+    .section-card:hover & {
+      background: rgba(16, 185, 129, 0.3);
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+    }
+  }
+  
+  &--dark {
+    background: rgba(14, 165, 233, 0.2);
+    color: #38bdf8;
+    
+    .section-card:hover & {
+      background: rgba(14, 165, 233, 0.3);
+      box-shadow: 0 4px 14px rgba(14, 165, 233, 0.25);
+    }
+  }
+}
+
+// Title
+.section-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: color 0.3s ease;
+  
+  @media (min-width: 640px) {
+    font-size: 1.875rem;
+  }
+  
+  &--light { color: #111827; }
+  &--dark { color: white; }
+}
+
+// Content
+.section-card-content {
+  position: relative;
+  transition: color 0.3s ease;
+  
+  &--light { color: #374151; }
+  &--dark { color: #e5e7eb; }
+}

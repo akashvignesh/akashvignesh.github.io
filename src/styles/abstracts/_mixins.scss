@@ -1,0 +1,208 @@
+// ============================================
+// MIXINS - Reusable Style Patterns
+// ============================================
+
+@use 'variables' as *;
+
+// ============================================
+// RESPONSIVE BREAKPOINTS
+// ============================================
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$breakpoint}";
+  }
+}
+
+@mixin respond-below($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint) - 1px) {
+      @content;
+    }
+  }
+}
+
+// ============================================
+// FLEXBOX UTILITIES
+// ============================================
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// ============================================
+// CARD STYLES
+// ============================================
+@mixin card-base {
+  border-radius: map-get($radius, 2xl);
+  transition: all map-get($duration, normal) ease;
+}
+
+@mixin card-hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -10px var(--shadow-color);
+}
+
+@mixin glass-effect {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+// ============================================
+// BUTTON STYLES
+// ============================================
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  border-radius: map-get($radius, full);
+  transition: all map-get($duration, normal) ease;
+  cursor: pointer;
+  
+  &:hover {
+    transform: scale(1.02) translateY(-2px);
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  
+  &:hover {
+    box-shadow: 0 10px 30px -5px var(--glow-color);
+  }
+}
+
+@mixin button-outline {
+  @include button-base;
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  
+  &:hover {
+    background: var(--primary);
+    color: white;
+  }
+}
+
+// ============================================
+// GRADIENT TEXT
+// ============================================
+@mixin gradient-text($from, $via, $to) {
+  background: linear-gradient(135deg, $from, $via, $to);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// ============================================
+// GLOW EFFECTS
+// ============================================
+@mixin glow($color, $intensity: 20px) {
+  box-shadow: 
+    0 0 $intensity $color,
+    0 0 ($intensity * 2) rgba($color, 0.5),
+    0 0 ($intensity * 3) rgba($color, 0.3);
+}
+
+@mixin text-glow($color) {
+  text-shadow: 
+    0 0 10px $color,
+    0 0 20px rgba($color, 0.5),
+    0 0 30px rgba($color, 0.3);
+}
+
+// ============================================
+// ANIMATIONS
+// ============================================
+@mixin animate($name, $duration: 0.6s, $timing: ease-out, $fill: forwards) {
+  animation: $name $duration $timing $fill;
+}
+
+// ============================================
+// SCROLLBAR STYLING
+// ============================================
+@mixin custom-scrollbar($thumb-color, $track-color) {
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: 5px;
+    
+    &:hover {
+      background: lighten($thumb-color, 10%);
+    }
+  }
+}
+
+// ============================================
+// TRUNCATE TEXT
+// ============================================
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// ============================================
+// FOCUS STYLES
+// ============================================
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
+
+// ============================================
+// ABSOLUTE POSITIONING
+// ============================================
+@mixin absolute-fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

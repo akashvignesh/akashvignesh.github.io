@@ -1,0 +1,107 @@
+// ============================================
+// FORMS - Input & Form Styles
+// ============================================
+
+// ============================================
+// INPUT BASE
+// ============================================
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  
+  // Light theme
+  background: white;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+  
+  &::placeholder {
+    color: #9ca3af;
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  }
+  
+  // Dark theme
+  .dark & {
+    background: rgba(30, 41, 59, 0.8);
+    color: #ffffff;
+    border-color: rgba(56, 189, 248, 0.2);
+    
+    &::placeholder {
+      color: #6b7280;
+    }
+    
+    &:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+    }
+  }
+}
+
+// ============================================
+// TEXTAREA
+// ============================================
+.textarea {
+  @extend .input;
+  resize: vertical;
+  min-height: 120px;
+}
+
+// ============================================
+// FORM GROUP
+// ============================================
+.form-group {
+  margin-bottom: 1rem;
+}
+
+// ============================================
+// LABEL
+// ============================================
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  
+  // Light theme
+  color: #374151;
+  
+  // Dark theme
+  .dark & {
+    color: #d1d5db;
+  }
+}
+
+// ============================================
+// ERROR STATE
+// ============================================
+.input-error {
+  border-color: #ef4444 !important;
+  
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+  }
+}
+
+.error-message {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #ef4444;
+}
+
+// ============================================
+// SUCCESS STATE
+// ============================================
+.input-success {
+  border-color: #22c55e !important;
+  
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1) !important;
+  }
+}

@@ -1,0 +1,197 @@
+// ============================================
+// BUTTONS - Button Component Styles
+// ============================================
+
+// ============================================
+// BASE BUTTON
+// ============================================
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  
+  &:hover {
+    transform: scale(1.02) translateY(-2px);
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+  
+  // Icon inside button
+  .btn-icon {
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover .btn-icon {
+    transform: translateX(2px);
+  }
+}
+
+// ============================================
+// PRIMARY BUTTON
+// ============================================
+.btn-primary {
+  @extend .btn;
+  color: white;
+  
+  // Light theme
+  background: linear-gradient(135deg, #10b981, #06b6d4);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #059669, #0891b2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover {
+    box-shadow: 0 10px 30px -5px rgba(16, 185, 129, 0.4);
+    
+    &::before {
+      opacity: 1;
+    }
+  }
+  
+  // Dark theme
+  .dark & {
+    background: linear-gradient(135deg, #38bdf8, #06b6d4);
+    
+    &::before {
+      background: linear-gradient(135deg, #0ea5e9, #0891b2);
+    }
+    
+    &:hover {
+      box-shadow: 0 10px 30px -5px rgba(56, 189, 248, 0.4);
+    }
+  }
+  
+  span, svg {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// ============================================
+// OUTLINE BUTTON
+// ============================================
+.btn-outline {
+  @extend .btn;
+  background: transparent;
+  
+  // Light theme
+  color: #10b981;
+  border: 2px solid rgba(16, 185, 129, 0.5);
+  
+  &:hover {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: #10b981;
+  }
+  
+  // Dark theme
+  .dark & {
+    color: #38bdf8;
+    border-color: rgba(56, 189, 248, 0.5);
+    
+    &:hover {
+      background: rgba(56, 189, 248, 0.1);
+      border-color: #38bdf8;
+    }
+  }
+}
+
+// ============================================
+// GHOST BUTTON
+// ============================================
+.btn-ghost {
+  @extend .btn;
+  background: transparent;
+  
+  // Light theme
+  color: #4b5563;
+  
+  &:hover {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+  }
+  
+  // Dark theme
+  .dark & {
+    color: #d1d5db;
+    
+    &:hover {
+      background: rgba(56, 189, 248, 0.1);
+      color: #38bdf8;
+    }
+  }
+}
+
+// ============================================
+// ICON BUTTON
+// ============================================
+.btn-icon-only {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.1) translateY(-2px);
+  }
+}
+
+// ============================================
+// SOCIAL BUTTON
+// ============================================
+.btn-social {
+  @extend .btn-icon-only;
+  
+  // Light theme
+  background: white;
+  color: #6b7280;
+  border: 1px solid #e5e7eb;
+  
+  &:hover {
+    background: linear-gradient(135deg, #10b981, #06b6d4);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4);
+  }
+  
+  // Dark theme
+  .dark & {
+    background: rgba(30, 41, 59, 0.8);
+    color: #d1d5db;
+    border-color: rgba(56, 189, 248, 0.2);
+    
+    &:hover {
+      background: linear-gradient(135deg, #38bdf8, #06b6d4);
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 10px 20px -5px rgba(56, 189, 248, 0.4);
+    }
+  }
+  
+  i, svg {
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover i,
+  &:hover svg {
+    transform: scale(1.1);
+  }
+}

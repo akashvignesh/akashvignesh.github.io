@@ -1,8 +1,41 @@
 @import "tailwindcss";
 
+/* ============================================
+   CENTRALIZED COLOR CONFIGURATION
+   Developer Portfolio - Creative Theme
+   ============================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light theme (Day) - Fresh Green */
+  --background: #f8fdf8;
+  --foreground: #111827;
+  --grid-color: rgba(16, 185, 129, 0.08);
+  
+  /* Primary accent colors - Emerald/Teal for Light Mode */
+  --primary: #10b981;
+  --primary-light: #34d399;
+  --primary-dark: #059669;
+  
+  /* Secondary accent for gradients */
+  --secondary: #06b6d4;
+  
+  /* Text colors */
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  
+  /* Card and borders */
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --card-bg-solid: #ffffff;
+  --border-color: #d1fae5;
+  --border-hover: #10b981;
+  
+  /* Home page diagonal */
+  --home-accent: #10b981;
+  --home-accent-shadow: rgba(16, 185, 129, 0.25);
+  
+  /* Glow effects */
+  --glow-color: rgba(16, 185, 129, 0.4);
 }
 
 @theme inline {
@@ -12,15 +45,104 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Dark theme (Night) - Cyber Blue */
+.dark {
+  --background: #0a0f1a;
+  --foreground: #ffffff;
+  --grid-color: rgba(56, 189, 248, 0.06);
+  
+  /* Primary accent colors - Sky Blue for Dark Mode */
+  --primary: #38bdf8;
+  --primary-light: #7dd3fc;
+  --primary-dark: #0ea5e9;
+  
+  /* Secondary accent for gradients */
+  --secondary: #a78bfa;
+  
+  /* Text colors */
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  
+  /* Card and borders */
+  --card-bg: rgba(15, 23, 42, 0.85);
+  --card-bg-solid: #1e293b;
+  --border-color: #1e3a5f;
+  --border-hover: #38bdf8;
+  
+  /* Home page diagonal */
+  --home-accent: #0ea5e9;
+  --home-accent-shadow: rgba(14, 165, 233, 0.35);
+  
+  /* Glow effects */
+  --glow-color: rgba(56, 189, 248, 0.5);
 }
 
+/* ============================================
+   RESPONSIVE GRID BACKGROUND
+   ============================================ */
+
 body {
-  background: var(--background);
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--background);
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: clamp(20px, 4vw, 50px) clamp(20px, 4vw, 50px);
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.dark {
+  background-color: var(--background);
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: clamp(20px, 4vw, 50px) clamp(20px, 4vw, 50px);
+  background-attachment: fixed;
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Devicon colors */
+.devicon:not(.colored) {
+  color: var(--primary);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s ease forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease forwards;
+}
+

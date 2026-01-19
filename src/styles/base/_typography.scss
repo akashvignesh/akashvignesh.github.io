@@ -1,0 +1,83 @@
+// ============================================
+// TYPOGRAPHY - Font Styles
+// ============================================
+
+// ============================================
+// GRADIENT TEXT
+// ============================================
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--primary-light));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-gradient 4s ease infinite;
+}
+
+// ============================================
+// NEON TEXT
+// ============================================
+.neon-text {
+  text-shadow: 
+    0 0 5px var(--primary),
+    0 0 10px var(--primary),
+    0 0 20px var(--primary),
+    0 0 40px var(--primary);
+}
+
+// ============================================
+// TERMINAL CURSOR
+// ============================================
+.terminal-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+}
+
+// ============================================
+// HOVER UNDERLINE
+// ============================================
+.hover-underline {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transition: width 0.3s ease;
+  }
+  
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+// ============================================
+// HIGHLIGHTED TEXT
+// ============================================
+.text-highlight {
+  position: relative;
+  z-index: 1;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -2px;
+    right: -2px;
+    height: 40%;
+    background: var(--primary);
+    opacity: 0.2;
+    z-index: -1;
+    transition: height 0.3s ease, opacity 0.3s ease;
+  }
+  
+  &:hover::before {
+    height: 100%;
+    opacity: 0.3;
+  }
+}

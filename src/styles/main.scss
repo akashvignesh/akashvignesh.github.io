@@ -1,0 +1,44 @@
+// ============================================
+// MAIN STYLESHEET
+// Developer Portfolio - SCSS Architecture
+// ============================================
+
+// Abstract layer (variables, mixins, animations)
+@use 'abstracts';
+
+// Base layer (reset, typography)
+@use 'base';
+
+// Layout layer
+@use 'layout/main' as layout;
+
+// Components layer
+@use 'components';
+
+// Page-specific components
+@use 'components/about';
+@use 'components/education';
+@use 'components/experience';
+@use 'components/projects';
+@use 'components/contact';
+@use 'components/footer';
+@use 'components/topnav';
+@use 'components/section-card';
+@use 'components/leftnav';
+@use 'components/sidebar';
+
+// Pages layer
+@use 'pages';
+
+// Utilities layer
+@use 'utilities';
+
+// ============================================
+// ADDITIONAL STYLES
+// Any styles that don't fit in the above categories
+// ============================================
+
+// Smooth transition for theme switching
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}

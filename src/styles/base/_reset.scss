@@ -1,0 +1,176 @@
+// ============================================
+// BASE - Reset & Default Styles
+// ============================================
+
+// ============================================
+// CSS CUSTOM PROPERTIES (for Tailwind compatibility)
+// ============================================
+:root {
+  // Light theme (Day) - Fresh Emerald
+  --background: #f8fdf8;
+  --foreground: #111827;
+  --grid-color: rgba(16, 185, 129, 0.08);
+  
+  --primary: #10b981;
+  --primary-light: #34d399;
+  --primary-dark: #059669;
+  --secondary: #06b6d4;
+  
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --card-bg-solid: #ffffff;
+  --border-color: #d1fae5;
+  --border-hover: #10b981;
+  
+  --glow-color: rgba(16, 185, 129, 0.4);
+  --shadow-color: rgba(16, 185, 129, 0.25);
+}
+
+.dark {
+  // Dark theme (Night) - Cyber Blue
+  --background: #0a0f1a;
+  --foreground: #ffffff;
+  --grid-color: rgba(56, 189, 248, 0.06);
+  
+  --primary: #38bdf8;
+  --primary-light: #7dd3fc;
+  --primary-dark: #0ea5e9;
+  --secondary: #a78bfa;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  
+  --card-bg: rgba(15, 23, 42, 0.85);
+  --card-bg-solid: #1e293b;
+  --border-color: #1e3a5f;
+  --border-hover: #38bdf8;
+  
+  --glow-color: rgba(56, 189, 248, 0.5);
+  --shadow-color: rgba(14, 165, 233, 0.35);
+}
+
+// ============================================
+// BASE STYLES
+// ============================================
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--background);
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: clamp(20px, 4vw, 50px) clamp(20px, 4vw, 50px);
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ============================================
+// SELECTION
+// ============================================
+::selection {
+  background: var(--primary);
+  color: white;
+}
+
+// ============================================
+// LINKS
+// ============================================
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+// ============================================
+// IMAGES
+// ============================================
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+// ============================================
+// FORM ELEMENTS
+// ============================================
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+// ============================================
+// LISTS
+// ============================================
+ul,
+ol {
+  list-style: none;
+}
+
+// ============================================
+// HEADINGS
+// ============================================
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+// ============================================
+// SCROLL SNAP
+// ============================================
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+// ============================================
+// FOCUS VISIBLE
+// ============================================
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+// ============================================
+// REDUCED MOTION
+// ============================================
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,126 @@
+// ============================================
+// EFFECTS - Visual Effects & Utilities
+// ============================================
+
+// ============================================
+// GLASS EFFECT
+// ============================================
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  .dark & {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  
+  .dark & {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+// ============================================
+// GLOW EFFECTS
+// ============================================
+.glow {
+  box-shadow: 0 0 20px var(--glow-color);
+}
+
+.glow-sm {
+  box-shadow: 0 0 10px var(--glow-color);
+}
+
+.glow-lg {
+  box-shadow: 0 0 40px var(--glow-color);
+}
+
+.glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+// ============================================
+// GRADIENTS
+// ============================================
+.gradient-primary {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.gradient-text-primary {
+  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--primary-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// ============================================
+// SHADOWS
+// ============================================
+.shadow-glow {
+  // Light theme
+  box-shadow: 0 10px 40px -10px rgba(16, 185, 129, 0.3);
+  
+  .dark & {
+    box-shadow: 0 10px 40px -10px rgba(56, 189, 248, 0.3);
+  }
+}
+
+.shadow-glow-lg {
+  // Light theme
+  box-shadow: 0 20px 60px -15px rgba(16, 185, 129, 0.4);
+  
+  .dark & {
+    box-shadow: 0 20px 60px -15px rgba(56, 189, 248, 0.4);
+  }
+}
+
+// ============================================
+// BORDERS
+// ============================================
+.border-glow {
+  // Light theme
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  
+  &:hover {
+    border-color: #10b981;
+  }
+  
+  .dark & {
+    border-color: rgba(56, 189, 248, 0.3);
+    
+    &:hover {
+      border-color: #38bdf8;
+    }
+  }
+}
+
+// ============================================
+// TIMELINE LINE
+// ============================================
+.timeline-line {
+  background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+}
+
+// ============================================
+// CODE BLOCK
+// ============================================
+.code-block {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+// ============================================
+// SKILL ICON FLOAT
+// ============================================
+.skill-icon-hover:hover {
+  animation: float 1s ease-in-out infinite;
+}
