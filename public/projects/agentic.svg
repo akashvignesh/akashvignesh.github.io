@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+  <defs>
+    <pattern id="g4" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#16213a" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="640" height="360" fill="#0b1120"/>
+  <rect width="640" height="360" fill="url(#g4)"/>
+  <rect width="640" height="4" fill="#a78bfa"/>
+
+  <rect x="70" y="86" width="270" height="180" rx="10" fill="#0f1b30" stroke="#a78bfa" stroke-opacity="0.6"/>
+  <path d="M70 116 H 340" stroke="#a78bfa" stroke-opacity="0.4" stroke-width="1.5"/>
+  <circle cx="88" cy="101" r="5" fill="#f87171"/>
+  <circle cx="106" cy="101" r="5" fill="#fbbf24"/>
+  <circle cx="124" cy="101" r="5" fill="#34d399"/>
+  <rect x="150" y="95" width="170" height="12" rx="6" fill="#1e293b"/>
+
+  <rect x="92" y="140" width="150" height="14" rx="4" fill="#1e293b"/>
+  <rect x="92" y="166" width="226" height="14" rx="4" fill="#1e293b"/>
+  <rect x="92" y="192" width="120" height="28" rx="6" fill="#a78bfa" fill-opacity="0.25" stroke="#a78bfa"/>
+  <text x="152" y="211" text-anchor="middle" fill="#c4b5fd" font-family="monospace" font-size="13">Submit</text>
+  <path d="M250 214 l 16 6 l -6 4 l 6 8 l -5 3 l -6 -8 l -5 5 z" fill="#e2e8f0"/>
+
+  <path d="M340 150 C 400 150, 400 150, 430 150" stroke="#475569" stroke-width="2" fill="none"/>
+  <path d="M470 186 C 470 230, 410 230, 360 216" stroke="#475569" stroke-width="2" fill="none" stroke-dasharray="5 5"/>
+  <path d="M360 216 l 12 -5 v 10 z" fill="#475569"/>
+
+  <polygon points="470,118 506,138 506,178 470,198 434,178 434,138" fill="#0f1b30" stroke="#a78bfa" stroke-width="2"/>
+  <text x="470" y="163" text-anchor="middle" fill="#c4b5fd" font-family="monospace" font-size="20" font-weight="bold">LLM</text>
+
+  <circle cx="540" cy="120" r="4" fill="#a78bfa"/>
+  <circle cx="556" cy="158" r="4" fill="#a78bfa" fill-opacity="0.6"/>
+  <circle cx="538" cy="196" r="4" fill="#a78bfa" fill-opacity="0.4"/>
+  <line x1="506" y1="138" x2="540" y2="120" stroke="#3b3357" stroke-width="1.5"/>
+  <line x1="506" y1="158" x2="556" y2="158" stroke="#3b3357" stroke-width="1.5"/>
+  <line x1="506" y1="178" x2="538" y2="196" stroke="#3b3357" stroke-width="1.5"/>
+
+  <text x="70" y="318" fill="#64748b" font-family="monospace" font-size="17">LLM agent · Chrome DevTools Protocol</text>
+</svg>

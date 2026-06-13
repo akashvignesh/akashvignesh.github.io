@@ -25,13 +25,13 @@
     
     // Light theme
     background: rgba(255, 255, 255, 0.85);
-    border: 1px solid rgba(16, 185, 129, 0.2);
+    border: 1px solid rgba(79, 70, 229, 0.2);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     
     // Dark theme
     .dark & {
-      background: rgba(15, 23, 42, 0.85);
-      border-color: rgba(56, 189, 248, 0.2);
+      background: rgba(10, 10, 15, 0.85);
+      border-color: rgba(129, 140, 248, 0.2);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
   }
@@ -55,15 +55,15 @@
   color: #6b7280;
   
   &:hover {
-    color: #10b981;
-    background: rgba(16, 185, 129, 0.1);
+    color: #4f46e5;
+    background: rgba(79, 70, 229, 0.1);
   }
   
   // Active state
   &.active {
     color: white;
-    background: linear-gradient(135deg, #10b981, #06b6d4);
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
   }
   
   // Dark theme
@@ -71,13 +71,13 @@
     color: #9ca3af;
     
     &:hover {
-      color: #38bdf8;
-      background: rgba(56, 189, 248, 0.1);
+      color: #818cf8;
+      background: rgba(129, 140, 248, 0.1);
     }
     
     &.active {
-      background: linear-gradient(135deg, #38bdf8, #06b6d4);
-      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+      background: linear-gradient(135deg, #818cf8, #7c3aed);
+      box-shadow: 0 4px 12px rgba(129, 140, 248, 0.3);
     }
   }
 }
@@ -102,8 +102,8 @@
   color: #374151;
   
   &:hover {
-    background: rgba(16, 185, 129, 0.1);
-    color: #10b981;
+    background: rgba(79, 70, 229, 0.1);
+    color: #4f46e5;
   }
   
   // Dark theme
@@ -111,8 +111,8 @@
     color: #d1d5db;
     
     &:hover {
-      background: rgba(56, 189, 248, 0.1);
-      color: #38bdf8;
+      background: rgba(129, 140, 248, 0.1);
+      color: #818cf8;
     }
   }
 }
@@ -130,13 +130,13 @@
   
   // Light theme
   background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(79, 70, 229, 0.2);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   
   // Dark theme
   .dark & {
-    background: rgba(15, 23, 42, 0.95);
-    border-color: rgba(56, 189, 248, 0.2);
+    background: rgba(10, 10, 15, 0.95);
+    border-color: rgba(129, 140, 248, 0.2);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
   }
   
@@ -152,12 +152,12 @@
     color: #374151;
     
     &:hover {
-      background: rgba(16, 185, 129, 0.1);
-      color: #10b981;
+      background: rgba(79, 70, 229, 0.1);
+      color: #4f46e5;
     }
     
     &.active {
-      background: linear-gradient(135deg, #10b981, #06b6d4);
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
       color: white;
     }
     
@@ -166,12 +166,12 @@
       color: #d1d5db;
       
       &:hover {
-        background: rgba(56, 189, 248, 0.1);
-        color: #38bdf8;
+        background: rgba(129, 140, 248, 0.1);
+        color: #818cf8;
       }
       
       &.active {
-        background: linear-gradient(135deg, #38bdf8, #06b6d4);
+        background: linear-gradient(135deg, #818cf8, #7c3aed);
       }
     }
   }

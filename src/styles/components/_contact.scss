@@ -64,12 +64,12 @@
     
     &:focus {
       border-color: transparent;
-      box-shadow: 0 0 0 2px #10b981;
+      box-shadow: 0 0 0 2px #4f46e5;
     }
   }
   
   &--dark {
-    background: rgba(30, 41, 59, 0.8);
+    background: rgba(26, 26, 34, 0.8);
     border: 1px solid #334155;
     color: white;
     
@@ -77,7 +77,7 @@
     
     &:focus {
       border-color: transparent;
-      box-shadow: 0 0 0 2px #0ea5e9;
+      box-shadow: 0 0 0 2px #6366f1;
     }
   }
 }
@@ -108,18 +108,18 @@ textarea.contact-input {
   }
   
   &--light {
-    background: linear-gradient(to right, #10b981, #14b8a6);
+    background: linear-gradient(to right, #4f46e5, #6366f1);
     
     &:hover {
-      box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.4);
+      box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.4);
     }
   }
   
   &--dark {
-    background: linear-gradient(to right, #0284c7, #06b6d4);
+    background: linear-gradient(to right, #4f46e5, #7c3aed);
     
     &:hover {
-      box-shadow: 0 20px 25px -5px rgba(14, 165, 233, 0.4);
+      box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.4);
     }
   }
 }
@@ -185,7 +185,7 @@ textarea.contact-input {
   }
   
   &--dark {
-    &:hover { background: rgba(30, 41, 59, 0.5); }
+    &:hover { background: rgba(26, 26, 34, 0.5); }
   }
 }
 
@@ -203,13 +203,13 @@ textarea.contact-input {
   }
   
   &--light {
-    background: linear-gradient(to bottom right, #10b981, #14b8a6);
-    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+    background: linear-gradient(to bottom right, #4f46e5, #6366f1);
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
   }
   
   &--dark {
-    background: linear-gradient(to bottom right, #0284c7, #06b6d4);
-    box-shadow: 0 4px 14px rgba(14, 165, 233, 0.3);
+    background: linear-gradient(to bottom right, #4f46e5, #7c3aed);
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
   }
 }
 
@@ -240,14 +240,14 @@ textarea.contact-input {
     color: #1f2937; 
     
     .contact-method:hover & {
-      color: #10b981;
+      color: #4f46e5;
     }
   }
   &--dark { 
     color: #e5e7eb;
     
     .contact-method:hover & {
-      color: #38bdf8;
+      color: #818cf8;
     }
   }
 }
@@ -291,21 +291,21 @@ textarea.contact-input {
     color: #374151;
     
     &:hover {
-      background: linear-gradient(to bottom right, #10b981, #14b8a6);
+      background: linear-gradient(to bottom right, #4f46e5, #6366f1);
       color: white;
       border-color: transparent;
-      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
     }
   }
   
   &--dark {
-    background: #1e293b;
+    background: #1a1a22;
     color: #d1d5db;
     
     &:hover {
-      background: linear-gradient(to bottom right, #0ea5e9, #06b6d4);
+      background: linear-gradient(to bottom right, #6366f1, #7c3aed);
       color: white;
-      box-shadow: 0 4px 14px rgba(14, 165, 233, 0.4);
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
     }
   }
 }
@@ -316,5 +316,27 @@ textarea.contact-input {
   
   .contact-social-link:hover & {
     transform: scale(1.1);
+  }
+}
+
+.contact-status {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+
+  &--success {
+    color: #4338ca;
+  }
+
+  &--error {
+    color: #dc2626;
+  }
+
+  &--dark.contact-status--success {
+    color: #818cf8;
+  }
+
+  &--dark.contact-status--error {
+    color: #f87171;
   }
 }

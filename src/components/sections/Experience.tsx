@@ -2,28 +2,82 @@
 import { useState } from 'react';
 import SectionCard from '../SectionCard';
 import { useTheme } from '@/src/context/ThemeContext';
+import { asset } from '@/src/config/site';
 
 const experiences = [
   {
-    title: 'Software Engineer',
-    company: 'Guardian India Operations Private Limited',
-    location: 'Chennai, India',
-    period: 'April 2022 – August 2024',
-    image: '/experience/guardian.jpg',
+    title: 'Software Engineer, Research',
+    company: 'University at Buffalo',
+    location: 'Buffalo, NY',
+    period: 'Feb 2026 – Present',
+    image: '/education/buffalo.jpg',
     achievements: [
-      'Architected and delivered RESTful microservices using Java and Spring Boot, enhancing system scalability and reliability across distributed environments, leading to a 25% improvement in request throughput and zero downtime during deployments.',
-      'Refactored legacy monolithic modules into modular microservices, reducing codebase complexity by 35%, improving deployment speed by 40%, and accelerating feature release cycles from weeks to days.',
-      'Boosted backend performance through DB2/SQL query optimization, Redis caching, and asynchronous processing, cutting average response time by up to 35% and decreasing peak-time CPU utilization by 20%.',
-      'Led development of the Insurance Eligibility module, integrating Splunk dashboards and AWS CloudWatch alerts that enabled real-time API monitoring, resulting in a 50% faster issue resolution and 15% higher API uptime.',
-      'Maintained 90%+ automated test coverage using JUnit and Mockito, integrating CI/CD pipelines to cut production defects by 20% and ensure consistently stable, high-quality releases aligned with Agile sprint goals.',
+      'Built a full-stack Faculty Portal for 200+ users across 6 departments: 7+ Java Spring Boot REST APIs, JWT/OAuth2 auth, normalized PostgreSQL schemas, and reusable React/Next.js workflows.',
+      'Cut average query response time by 40% and database read load by 35% with index-aware SQL patterns and optimized Hibernate/JPA queries across 8+ workflows.',
+      'Reduced deployment cycle from 30 minutes to under 5 by containerizing services with Docker and building GitHub Actions CI/CD with automated test gates on Linux.',
     ],
     technologies: [
       { name: 'Java', icon: 'devicon-java-plain' },
       { name: 'Spring Boot', icon: 'devicon-spring-original' },
-      { name: 'DB2', icon: 'devicon-sqldeveloper-plain' },
-      { name: 'Redis', icon: 'devicon-redis-plain' },
+      { name: 'Next.js', icon: 'devicon-nextjs-plain' },
+      { name: 'PostgreSQL', icon: 'devicon-postgresql-plain' },
+      { name: 'Docker', icon: 'devicon-docker-plain' },
+      { name: 'GitHub Actions', icon: 'devicon-githubactions-plain' },
+    ],
+  },
+  {
+    title: 'Software Engineer II',
+    company: 'Guardian Life',
+    location: 'Chennai, India',
+    period: 'Apr 2024 – Aug 2024',
+    image: '/experience/guardian.jpg',
+    achievements: [
+      'Reduced MTTR from 5 days to 2 on a distributed eligibility platform sustaining 99.9% SLA at 500+ concurrent sessions by building real-time Splunk dashboards and AWS CloudWatch alarms.',
+      'Decreased release cycle from 1 hour to 15 minutes (3x faster shipping) by helping decompose a monolith into event-driven microservices with isolated CI/CD pipelines.',
+      'Cut cyclomatic complexity by 75% across 25+ services and lifted PR throughput 20% by enforcing SonarQube quality gates, reviewing code, and mentoring 7 engineers.',
+    ],
+    technologies: [
+      { name: 'Java', icon: 'devicon-java-plain' },
+      { name: 'Spring Boot', icon: 'devicon-spring-original' },
       { name: 'AWS', icon: 'devicon-amazonwebservices-plain-wordmark' },
       { name: 'Docker', icon: 'devicon-docker-plain' },
+      { name: 'Git', icon: 'devicon-git-plain' },
+    ],
+  },
+  {
+    title: 'Software Engineer I',
+    company: 'Guardian Life',
+    location: 'Chennai, India',
+    period: 'Oct 2022 – Mar 2024',
+    image: '/experience/guardian.jpg',
+    achievements: [
+      'Reduced API p95 latency from 455 ms to 120 ms and improved throughput 3x by rewriting Oracle/SQL execution plans, adding covering indexes, and introducing Redis caching with TTL-based invalidation across 12+ endpoints.',
+      'Improved system reliability 35% and cut critical incidents 40% with circuit-breaker patterns and automated Postman regression suites across 20+ REST API contracts.',
+      'Shipped 5+ Java Spring Boot microservice features for high-volume insurance eligibility and transaction processing workflows.',
+    ],
+    technologies: [
+      { name: 'Java', icon: 'devicon-java-plain' },
+      { name: 'Spring Boot', icon: 'devicon-spring-original' },
+      { name: 'Oracle', icon: 'devicon-oracle-original' },
+      { name: 'Redis', icon: 'devicon-redis-plain' },
+      { name: 'Angular', icon: 'devicon-angularjs-plain' },
+    ],
+  },
+  {
+    title: 'Software Engineer Intern',
+    company: 'Guardian Life',
+    location: 'Chennai, India',
+    period: 'Apr 2022 – Sep 2022',
+    image: '/experience/guardian.jpg',
+    achievements: [
+      'Owned end-to-end delivery of 5+ production eligibility features on a Java Spring Boot microservices platform backed by Oracle, supporting $2M+ in monthly policy transactions.',
+      'Caught and same-day resolved a P0 coverage defect missed by 3 prior reviews by authoring JUnit/Mockito contract tests across 15+ edge cases, protecting 12K+ policyholders.',
+      'Cut new-engineer onboarding from 2 days to 4 hours with 3+ reusable Angular workflows and setup/deployment runbooks.',
+    ],
+    technologies: [
+      { name: 'Java', icon: 'devicon-java-plain' },
+      { name: 'Spring Boot', icon: 'devicon-spring-original' },
+      { name: 'Oracle', icon: 'devicon-oracle-original' },
       { name: 'Git', icon: 'devicon-git-plain' },
     ],
   },
@@ -52,11 +106,13 @@ export default function Experience() {
                 {/* Company Logo */}
                 <div className={`experience-logo experience-logo--${themeClass}`}>
                   <img
-                    src={exp.image}
+                    src={asset(exp.image)}
                     alt={exp.company}
                     className="experience-logo-img"
                     onError={(e) => {
-                      e.currentTarget.src = `https://via.placeholder.com/150/${theme === 'dark' ? '0f172a' : '0d9488'}/ffffff?text=G`;
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src =
+                        "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='150'%20height='150'%3E%3Crect%20width='150'%20height='150'%20fill='%230f172a'/%3E%3C/svg%3E";
                     }}
                   />
                 </div>

@@ -23,23 +23,23 @@
   
   &:focus {
     outline: none;
-    border-color: #10b981;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
   }
   
   // Dark theme
   .dark & {
-    background: rgba(30, 41, 59, 0.8);
+    background: rgba(26, 26, 34, 0.8);
     color: #ffffff;
-    border-color: rgba(56, 189, 248, 0.2);
+    border-color: rgba(129, 140, 248, 0.2);
     
     &::placeholder {
       color: #6b7280;
     }
     
     &:focus {
-      border-color: #38bdf8;
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+      border-color: #818cf8;
+      box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.1);
     }
   }
 }

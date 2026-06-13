@@ -10,8 +10,8 @@
   
   &--light {
     background: linear-gradient(to bottom right, white, #f9fafb, rgba(240, 253, 250, 0.3));
-    box-shadow: 0 4px 14px rgba(20, 184, 166, 0.1);
-    border: 1px solid #ccfbf1;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.1);
+    border: 1px solid #e0e7ff;
   }
   
   &--dark {
@@ -38,11 +38,11 @@
   transition: border-color 0.3s ease;
   
   &--light {
-    border-color: #0ea5e9;
+    border-color: #6366f1;
   }
   
   &--dark {
-    border-color: #38bdf8;
+    border-color: #818cf8;
   }
 }
 
@@ -72,8 +72,8 @@
   margin-bottom: 1rem;
   transition: color 0.3s ease;
   
-  &--light { color: #0284c7; }
-  &--dark { color: #38bdf8; }
+  &--light { color: #4f46e5; }
+  &--dark { color: #818cf8; }
 }
 
 // Divider
@@ -119,12 +119,12 @@
   &--light { 
     color: #1f2937;
     
-    &:hover { color: #0284c7; }
+    &:hover { color: #4f46e5; }
   }
   &--dark { 
     color: #e5e7eb;
     
-    &:hover { color: #38bdf8; }
+    &:hover { color: #818cf8; }
   }
 }
 
@@ -155,21 +155,21 @@
   text-decoration: none;
   
   &--light {
-    background: #ccfbf1;
-    color: #0d9488;
+    background: #e0e7ff;
+    color: #4f46e5;
     
     &:hover {
-      background: #14b8a6;
+      background: #6366f1;
       color: white;
     }
   }
   
   &--dark {
     background: rgba(12, 74, 110, 0.3);
-    color: #38bdf8;
+    color: #818cf8;
     
     &:hover {
-      background: #0ea5e9;
+      background: #6366f1;
       color: white;
     }
   }

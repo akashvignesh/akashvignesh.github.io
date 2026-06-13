@@ -63,19 +63,19 @@
 // ============================================
 .shadow-glow {
   // Light theme
-  box-shadow: 0 10px 40px -10px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 10px 40px -10px rgba(79, 70, 229, 0.3);
   
   .dark & {
-    box-shadow: 0 10px 40px -10px rgba(56, 189, 248, 0.3);
+    box-shadow: 0 10px 40px -10px rgba(129, 140, 248, 0.3);
   }
 }
 
 .shadow-glow-lg {
   // Light theme
-  box-shadow: 0 20px 60px -15px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 20px 60px -15px rgba(79, 70, 229, 0.4);
   
   .dark & {
-    box-shadow: 0 20px 60px -15px rgba(56, 189, 248, 0.4);
+    box-shadow: 0 20px 60px -15px rgba(129, 140, 248, 0.4);
   }
 }
 
@@ -84,17 +84,17 @@
 // ============================================
 .border-glow {
   // Light theme
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid rgba(79, 70, 229, 0.3);
   
   &:hover {
-    border-color: #10b981;
+    border-color: #4f46e5;
   }
   
   .dark & {
-    border-color: rgba(56, 189, 248, 0.3);
+    border-color: rgba(129, 140, 248, 0.3);
     
     &:hover {
-      border-color: #38bdf8;
+      border-color: #818cf8;
     }
   }
 }
@@ -111,8 +111,8 @@
 // ============================================
 .code-block {
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  background: linear-gradient(135deg, rgba(10, 10, 15, 0.95), rgba(26, 26, 34, 0.95));
+  border: 1px solid rgba(129, 140, 248, 0.2);
   border-radius: 0.5rem;
   padding: 1rem;
   overflow-x: auto;

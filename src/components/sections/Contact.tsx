@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import SectionCard from '../SectionCard';
 import { useTheme } from '@/src/context/ThemeContext';
+import { LINKS } from '@/src/config/links';
 
 export default function Contact() {
   const { theme } = useTheme();
@@ -13,11 +14,38 @@ export default function Contact() {
     subject: '',
     message: '',
   });
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Message sent! (This is a demo)');
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+
+    // No form service configured: fall back to the visitor's mail client.
+    if (!accessKey) {
+      const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`;
+      window.location.href = `mailto:${LINKS.email}?subject=${encodeURIComponent(
+        formData.subject || 'Portfolio contact'
+      )}&body=${encodeURIComponent(body)}`;
+      return;
+    }
+
+    try {
+      setStatus('sending');
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ access_key: accessKey, ...formData }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus('sent');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -92,12 +120,27 @@ export default function Contact() {
               />
             </div>
 
-            <button type="submit" className={`contact-submit contact-submit--${themeClass}`}>
+            <button
+              type="submit"
+              disabled={status === 'sending'}
+              className={`contact-submit contact-submit--${themeClass}`}
+            >
               <svg className="contact-submit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
               </svg>
-              Send Message
+              {status === 'sending' ? 'Sending…' : 'Send Message'}
             </button>
+
+            {status === 'sent' && (
+              <p role="status" className={`contact-status contact-status--success contact-status--${themeClass}`}>
+                Thanks! Your message has been sent. I&apos;ll get back to you soon.
+              </p>
+            )}
+            {status === 'error' && (
+              <p role="status" className={`contact-status contact-status--error contact-status--${themeClass}`}>
+                Something went wrong. Please email me directly at {LINKS.email}.
+              </p>
+            )}
           </form>
         </div>
 
@@ -105,7 +148,7 @@ export default function Contact() {
         <div className="contact-info">
           <div className="contact-intro">
             <h3 className={`contact-intro-title contact-intro-title--${themeClass}`}>
-              Let's work together!
+              Let&apos;s work together!
             </h3>
             <p className={`contact-intro-text contact-intro-text--${themeClass}`}>
               Feel free to reach out for collaborations, opportunities, or just a friendly chat
@@ -115,7 +158,7 @@ export default function Contact() {
 
           <div className="contact-methods">
             {[
-              { icon: 'email', label: 'Email', value: 'asureshk@buffalo.edu', href: 'mailto:asureshk@buffalo.edu' },
+              { icon: 'email', label: 'Email', value: LINKS.email, href: `mailto:${LINKS.email}` },
               { icon: 'phone', label: 'Phone', value: '+1 (716) 709-0514', href: 'tel:+17167090514' },
               { icon: 'location', label: 'Location', value: 'New York, USA', href: '#' },
             ].map((item) => (
@@ -157,15 +200,15 @@ export default function Contact() {
             </h4>
             <div className="contact-social-links">
               {[
-                { name: 'linkedin', icon: 'devicon-linkedin-plain', url: 'https://linkedin.com' },
-                { name: 'github', icon: 'devicon-github-original', url: 'https://github.com' },
-                { name: 'twitter', icon: 'devicon-twitter-original', url: 'https://twitter.com' },
+                { name: 'linkedin', icon: 'devicon-linkedin-plain', url: LINKS.linkedin },
+                { name: 'github', icon: 'devicon-github-original', url: LINKS.github },
               ].map((social) => (
                 <a
                   key={social.name}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={social.name}
                   className={`contact-social-link contact-social-link--${themeClass}`}
                 >
                   <i className={`devicon ${social.icon} contact-social-icon`} aria-hidden="true" />

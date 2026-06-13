@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import SectionCard from '../SectionCard';
 import { useTheme } from '@/src/context/ThemeContext';
+import { asset } from '@/src/config/site';
 
 interface Project {
   id: number;
@@ -11,6 +12,7 @@ interface Project {
   tags: string[];
   achievements: string[];
   period: string;
+  track: string;
   link?: string;
   github?: string;
 }
@@ -18,33 +20,78 @@ interface Project {
 const initialProjects: Project[] = [
   {
     id: 1,
-    title: 'Trading Assist Application for Stock Market',
-    description: 'A comprehensive stock prediction system using LSTM models for precise financial forecasting with real-time data integration.',
-    image: '/projects/trading.png',
-    tags: ['R', 'TensorFlow', 'Keras', 'quantmod', 'ggplot2'],
-    period: 'December 2024',
+    title: 'Pump Fault Risk Prediction Service',
+    description: 'A multimodal service that predicts industrial pump failure risk by fusing real-time sensor telemetry with inspection images.',
+    image: '/projects/pump.svg',
+    tags: ['Python', 'FastAPI', 'PyTorch', 'LightGBM', 'CLIP', 'Docker'],
+    period: '2026',
     achievements: [
-      'Designed and implemented a stock prediction system using LSTM models, achieving 97.61% accuracy and 2.39% MAPE for precise financial forecasting',
-      'Streamlined data preprocessing workflows with TensorFlow and Keras to enhance training efficiency',
-      'Integrated live financial data streams using quantmod and created visualizations with ggplot2, improving decision-making efficiency by 25%',
+      'Delivered +26% throughput and 49% lower p95 latency vs. a single-modal LightGBM baseline at 75 concurrent users, with sub-50 ms inference at peak load.',
+      'Fused sensor telemetry (LightGBM) with pump inspection images (CLIP ViT-B/32) through a trained Transformer cross-modal and gated-attention fusion layer.',
+      'Served predictions through a FastAPI service with health checks and OpenAPI docs, containerized with Docker for reproducible deployment.',
     ],
-    github: '#',
+    track: 'ML / AI Engineering',
+    github: 'https://github.com/akashvignesh/multimodal-pump-fault-prediction',
   },
   {
     id: 2,
-    title: 'Predictive Analytics for Diabetes',
-    description: 'A predictive healthcare model leveraging multiple ML algorithms with scalable deployment for real-time insights.',
-    image: '/projects/diabetes.png',
-    tags: ['Python', 'SQLite', 'Docker', 'Streamlit', 'Digital Ocean', 'MLflow'],
-    period: 'December 2024',
+    title: 'Bike Ride Demand Prediction',
+    description: 'An end-to-end MLOps pipeline that forecasts 6-hourly Citi Bike demand for NYC’s busiest stations, with automated retraining.',
+    image: '/projects/bike.svg',
+    tags: ['Python', 'LightGBM', 'Hopsworks', 'Streamlit', 'GitHub Actions', 'AWS S3'],
+    period: '2026',
     achievements: [
-      'Engineered a predictive model leveraging Logistic Regression, Random Forest, and Gradient Boosting with dependable accuracy',
-      'Processed extensive datasets using Pandas, NumPy, and scikit-learn for optimized data integrity and model performance',
-      'Implemented scalable deployment strategies with MLflow and Joblib, reducing model deployment time by 40%',
-      'Enabled real-time healthcare insights with a 30% improvement in response efficiency',
+      'Ingested raw Citi Bike trip data from a public S3 bucket and engineered 112 lag features across 6-hour bins for the busiest stations.',
+      'Stored features in a Hopsworks feature store and trained a LightGBM model with time-series cross-validation for reproducible, versioned pipelines.',
+      'Automated the feature and inference pipelines on a schedule with GitHub Actions and visualized 2024 actuals vs 2025 predictions in an interactive Streamlit dashboard.',
     ],
-    link: '#',
-    github: '#',
+    track: 'Data Engineering · MLOps',
+    github: 'https://github.com/akashvignesh/citibike-demand-forecasting',
+  },
+  {
+    id: 3,
+    title: 'NYC Yellow Taxi Demand Predictor',
+    description: 'A machine-learning system that predicts next-hour taxi ride demand across all NYC taxi zones, covering the full MLOps lifecycle.',
+    image: '/projects/taxi.svg',
+    tags: ['Python', 'LightGBM', 'Hopsworks', 'Streamlit', 'Pandas'],
+    period: '2025',
+    achievements: [
+      'Built a full MLOps pipeline from raw NYC TLC trip records through feature engineering, model training, and a live feature/model store on Hopsworks.',
+      'Trained a LightGBM regressor to predict the number of rides in the next hour for each pickup zone.',
+      'Served real-time predictions through a Streamlit dashboard for interactive exploration across all NYC zones.',
+    ],
+    track: 'Data Science · Analytics',
+    github: 'https://github.com/akashvignesh/nyc-taxi-demand-prediction',
+  },
+  {
+    id: 4,
+    title: 'Agentic Browser Automation Agent',
+    description: 'An LLM agent that drives a real Chrome session to complete any web task from a natural-language prompt: perceiving the page, choosing one action at a time, and verifying each step.',
+    image: '/projects/agentic.svg',
+    tags: ['TypeScript', 'Node.js', 'LLM Agents', 'Chrome DevTools Protocol', 'AWS Bedrock'],
+    period: '2026',
+    achievements: [
+      'Built a provider-agnostic agentic loop (Bedrock / Ollama / NVIDIA) that snapshots each page into an indexed element list with set-of-marks screenshots, lets the model pick one CDP action (fill / click / select / scroll / upload), then verifies and repeats. The LLM never touches a CSS selector.',
+      'Demonstrated it on the hard real-world case of end-to-end job applications, adding a deterministic domain layer: a profile resolver, a safety policy that blocks sensitive fields (SSN, payment, CAPTCHA) and gates final submission, and Gmail IMAP OTP / magic-link verification.',
+      'Hardened the runtime with a loop-guard that halts repeated failing actions and a per-page-fingerprint cache that replays known pages without any LLM calls, plus JSONL tool-trace and screenshot logging.',
+    ],
+    track: 'AI Engineering',
+    github: 'https://github.com/akashvignesh/agentic-web-automation',
+  },
+  {
+    id: 5,
+    title: 'Serverless AWS File-Processing Pipeline',
+    description: 'An event-driven AWS pipeline where a file upload spins up on-demand compute to process it and return the result, fully provisioned as infrastructure-as-code.',
+    image: '/projects/serverless.svg',
+    tags: ['Next.js', 'AWS Lambda', 'API Gateway', 'DynamoDB', 'EC2', 'AWS CDK'],
+    period: '2026',
+    achievements: [
+      'Designed an event-driven flow: a React/Next.js form submits a file through API Gateway and Lambda, persisting metadata to DynamoDB and the file to S3 via presigned URLs.',
+      'Used a DynamoDB stream to trigger a Lambda that launches a fresh EC2 instance, which downloads the input, runs the processing script, uploads the output to S3, and self-terminates.',
+      'Provisioned the entire stack as infrastructure-as-code with AWS CDK v2 (TypeScript) and the AWS SDK v3.',
+    ],
+    track: 'Data Engineering · Cloud',
+    github: 'https://github.com/akashvignesh/serverless-file-pipeline',
   },
 ];
 
@@ -79,11 +126,13 @@ export default function Projects() {
             {/* Image Container */}
             <div className="projects-image-container">
               <img
-                src={project.image}
+                src={asset(project.image)}
                 alt={project.title}
                 className="projects-image"
                 onError={(e) => {
-                  e.currentTarget.src = `https://via.placeholder.com/600x300/${theme === 'dark' ? '0f172a' : '0d9488'}/ffffff?text=${encodeURIComponent(project.title)}`;
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src =
+                    "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='600'%20height='300'%3E%3Crect%20width='600'%20height='300'%20fill='%230f172a'/%3E%3C/svg%3E";
                 }}
               />
               
@@ -98,6 +147,19 @@ export default function Projects() {
 
             {/* Content */}
             <div className="projects-content">
+              <div
+                style={{
+                  fontFamily: 'var(--font-geist-mono), ui-monospace, monospace',
+                  fontSize: '0.7rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase',
+                  color: 'var(--primary)',
+                  marginBottom: '0.4rem',
+                }}
+              >
+                {project.track}
+              </div>
               <h3 className={`projects-title projects-title--${themeClass}`}>
                 {project.title}
               </h3>

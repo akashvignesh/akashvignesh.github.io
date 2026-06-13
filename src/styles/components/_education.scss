@@ -31,7 +31,7 @@
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     
     &:hover {
-      border-color: #14b8a6;
+      border-color: #6366f1;
     }
   }
   
@@ -40,7 +40,7 @@
     border: 1px solid #374151;
     
     &:hover {
-      border-color: rgba(14, 165, 233, 0.5);
+      border-color: rgba(99, 102, 241, 0.5);
     }
   }
 }
@@ -71,7 +71,7 @@
   }
   
   &--light { background: #f9fafb; }
-  &--dark { background: rgba(15, 23, 42, 0.5); }
+  &--dark { background: rgba(10, 10, 15, 0.5); }
 }
 
 .education-logo-wrapper {
@@ -88,11 +88,11 @@
   }
   
   &--light {
-    box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.3);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
   }
   
   &--dark {
-    box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.3);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
   }
   
   .education-card:hover & {
@@ -136,15 +136,15 @@
   margin-bottom: 0.75rem;
   
   &--light {
-    background: #f0fdfa;
-    color: #0f766e;
-    border: 1px solid #99f6e4;
+    background: #eef2ff;
+    color: #4338ca;
+    border: 1px solid #c7d2fe;
   }
   
   &--dark {
     background: rgba(12, 74, 110, 0.5);
-    color: #7dd3fc;
-    border: 1px solid #0369a1;
+    color: #a5b4fc;
+    border: 1px solid #4338ca;
   }
 }
 
@@ -162,13 +162,13 @@
   &--light {
     color: #111827;
     
-    .education-card:hover & { color: #0d9488; }
+    .education-card:hover & { color: #4f46e5; }
   }
   
   &--dark {
     color: white;
     
-    .education-card:hover & { color: #38bdf8; }
+    .education-card:hover & { color: #818cf8; }
   }
 }
 
@@ -182,8 +182,8 @@
     font-size: 1rem;
   }
   
-  &--light { color: #0d9488; }
-  &--dark { color: #38bdf8; }
+  &--light { color: #4f46e5; }
+  &--dark { color: #818cf8; }
 }
 
 // Location
@@ -254,10 +254,10 @@
   }
   
   &--light {
-    background: linear-gradient(to right, #14b8a6, #0f766e);
+    background: linear-gradient(to right, #6366f1, #4338ca);
   }
   
   &--dark {
-    background: linear-gradient(to right, #38bdf8, #0284c7);
+    background: linear-gradient(to right, #818cf8, #4f46e5);
   }
 }

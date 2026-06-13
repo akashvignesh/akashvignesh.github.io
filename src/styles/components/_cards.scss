@@ -13,12 +13,12 @@
   
   // Light theme
   background: rgba(255, 255, 255, 0.95);
-  border: 1px solid #d1fae5;
+  border: 1px solid #e0e7ff;
   
   // Dark theme
   .dark & {
-    background: rgba(15, 23, 42, 0.85);
-    border-color: rgba(56, 189, 248, 0.2);
+    background: rgba(10, 10, 15, 0.85);
+    border-color: rgba(129, 140, 248, 0.2);
   }
 }
 
@@ -30,13 +30,13 @@
     transform: translateY(-5px);
     
     // Light theme
-    box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.2);
-    border-color: #10b981;
+    box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.2);
+    border-color: #4f46e5;
     
     // Dark theme
     .dark & {
-      box-shadow: 0 20px 40px -10px rgba(56, 189, 248, 0.2);
-      border-color: #38bdf8;
+      box-shadow: 0 20px 40px -10px rgba(129, 140, 248, 0.2);
+      border-color: #818cf8;
     }
   }
 }
@@ -122,9 +122,9 @@
   // Dark theme gradient
   .dark & {
     background: linear-gradient(135deg,
-      rgba(15, 23, 42, 0.9),
-      rgba(30, 41, 59, 0.8),
-      rgba(15, 23, 42, 0.9)
+      rgba(10, 10, 15, 0.9),
+      rgba(26, 26, 34, 0.8),
+      rgba(10, 10, 15, 0.9)
     );
   }
 }
@@ -220,7 +220,7 @@
     background: #f9fafb;
     
     .dark & {
-      background: rgba(15, 23, 42, 0.5);
+      background: rgba(10, 10, 15, 0.5);
     }
     
     img {

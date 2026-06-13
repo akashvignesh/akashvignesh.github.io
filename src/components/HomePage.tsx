@@ -1,68 +1,34 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "@/src/context/ThemeContext";
+import { asset } from "@/src/config/site";
+import { LINKS } from "@/src/config/links";
 
-// Icon data for floating background - inside right panel only
-const floatingIcons = [
-  'devicon-react-original',
-  'devicon-python-plain', 
-  'devicon-java-plain',
-  'devicon-docker-plain',
-  'devicon-amazonwebservices-plain-wordmark'
+// Tracks the rotating role badge cycles through; covers the full range
+// (backend SWE → ML/AI → data engineering → analytics).
+const ROLES = [
+  'Software Engineer',
+  'ML Engineer',
+  'AI Engineer',
+  'Data Engineer',
+  'Data & BI Analyst',
+];
+
+// Proof metrics spanning backend performance, ML, and scale.
+const heroStats = [
+  { value: '455→120ms', label: 'API p95 latency' },
+  { value: '3×', label: 'throughput gain' },
+  { value: '0.88', label: 'ML model AUC' },
+  { value: '$2M+/mo', label: 'transactions served' },
 ];
 
 export default function HomePage() {
-  const { theme, toggleTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
-  const isSnapping = useRef(false);
-  const lastScrollY = useRef(0);
+  const { theme } = useTheme();
+  const [roleIndex, setRoleIndex] = useState(0);
 
   useEffect(() => {
-    setMounted(true);
-    
-    const handleScroll = () => {
-      const currentScroll = window.scrollY;
-      const scrollingDown = currentScroll > lastScrollY.current;
-      lastScrollY.current = currentScroll;
-      
-      const homeHeight = window.innerHeight;
-      
-      if (currentScroll > 50 && currentScroll < homeHeight - 100 && !isSnapping.current) {
-        if (scrollTimeout.current) {
-          clearTimeout(scrollTimeout.current);
-        }
-        
-        scrollTimeout.current = setTimeout(() => {
-          if (isSnapping.current) return;
-          
-          isSnapping.current = true;
-          
-          if (scrollingDown) {
-            const aboutSection = document.getElementById('about');
-            if (aboutSection) {
-              const yOffset = -100;
-              const y = aboutSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
-              window.scrollTo({ top: y, behavior: 'smooth' });
-            }
-          } else {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }
-          
-          setTimeout(() => {
-            isSnapping.current = false;
-          }, 800);
-        }, 150);
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current);
-      }
-    };
+    const id = setInterval(() => setRoleIndex((i) => (i + 1) % ROLES.length), 2200);
+    return () => clearInterval(id);
   }, []);
 
   const scrollToAbout = () => {
@@ -80,119 +46,109 @@ export default function HomePage() {
     <section id="home" className="home-page">
       {/* Background */}
       <div className={`home-bg home-bg--${themeClass}`} />
-      
-      {/* Floating Icons - HIDDEN to prevent overlap with text */}
-      {/* Icons are now only in the right panel area */}
-
-      {/* Right Panel */}
-      <div className={`home-right-panel home-right-panel--${themeClass}`}>
-        <div className="pattern-overlay" />
-        <div className={`floating-blob floating-blob--${themeClass}`} />
-        {/* Floating icons inside right panel only */}
-        <div className="panel-icons">
-          {floatingIcons.map((icon, i) => (
-            <i 
-              key={i}
-              className={`panel-icon ${icon}`}
-              style={{ animationDelay: `${i * 0.5}s` }}
-            />
-          ))}
-        </div>
-      </div>
-      
-      {/* Theme Toggle */}
-      <div className="theme-toggle">
-        <button
-          onClick={toggleTheme}
-          className={`toggle-btn toggle-btn--${themeClass}`}
-          aria-label="Toggle theme"
-        >
-          {theme === 'dark' ? (
-            <svg viewBox="0 0 20 20" fill="currentColor">
-              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-            </svg>
-          ) : (
-            <svg viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
-            </svg>
-          )}
-        </button>
-      </div>
 
       {/* Main Content */}
       <div className="home-content">
-        {/* Status Badge */}
-        <div className="animate-fade-in">
-          <div className={`status-badge status-badge--${themeClass}`}>
-            <span className="status-dot" />
-            <span>Available for opportunities</span>
-          </div>
-        </div>
+        {/* Hero - two-column editorial layout */}
+        <div className="hero-grid">
+          {/* Left: identity */}
+          <div className="hero-identity">
+            {/* Status Badge */}
+            <div className="hero-status-wrap">
+              <div className={`status-badge status-badge--${themeClass}`}>
+                <span className="status-dot" />
+                <span>Available for opportunities</span>
+              </div>
+            </div>
 
-        {/* Hero Section */}
-        <div className="hero-section">
-          {/* Role Badge */}
-          <div className={`role-badge role-badge--${themeClass}`}>
-            <i className="devicon-python-plain" />
-            <span>Data Scientist & Software Engineer</span>
-          </div>
-          
-          {/* Name */}
-          <h1 className="hero-name">
-            <span className={`first-name first-name--${themeClass}`}>AKASH</span>
-            <span className={`last-name last-name--${themeClass}`}>SURESHKUMAR</span>
-          </h1>
-          
-          {/* Description */}
-          <p className={`hero-description hero-description--${themeClass}`}>
-            <span className={`highlight highlight--primary-${themeClass}`}>Data Science Graduate</span> at University at Buffalo with 2+ years of experience 
-            as a <span className={`highlight highlight--secondary-${themeClass}`}>Software Engineer</span>. Passionate about building scalable systems and leveraging 
-            data-driven insights to solve complex problems.
-          </p>
-          
-          {/* CTA Buttons */}
-          <div className="cta-buttons">
-            <a href="/resume.pdf" download className={`cta-primary cta-primary--${themeClass}`}>
-              <span className="btn-content">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                Resume
+            {/* Role Badge - rotates through tracks */}
+            <div className={`role-badge role-badge--${themeClass}`}>
+              <i className="devicon-python-plain" />
+              <span key={roleIndex} className="animate-fade-in" style={{ display: 'inline-block' }}>
+                {ROLES[roleIndex]}
               </span>
-              <div className="hover-bg" />
-            </a>
-            
-            <a href="#contact" className={`cta-secondary cta-secondary--${themeClass}`}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              Contact Me
-            </a>
+            </div>
+
+            {/* Name */}
+            <h1 className="hero-name">
+              <span className={`first-name first-name--${themeClass}`}>AKASH</span>
+              <span className={`last-name last-name--${themeClass}`}>SURESHKUMAR</span>
+            </h1>
+
+            {/* Description */}
+            <p className={`hero-description hero-description--${themeClass}`}>
+              3+ years shipping production backends: REST APIs and event-driven microservices in <span className={`highlight highlight--primary-${themeClass}`}>Java &amp; Spring Boot</span>, built to stay fast under load.
+              I also work in Python &amp; TypeScript, and build <span className={`highlight highlight--secondary-${themeClass}`}>ML/AI services &amp; data pipelines</span> on AWS. Currently finishing an MS at the University at Buffalo.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="cta-buttons">
+              <a href={asset("/resume.pdf")} download className={`cta-primary cta-primary--${themeClass}`}>
+                <span className="btn-content">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  Resume
+                </span>
+                <div className="hover-bg" />
+              </a>
+
+              <a href="#contact" className={`cta-secondary cta-secondary--${themeClass}`}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                Contact Me
+              </a>
+            </div>
           </div>
+
+          {/* Right: Currently + career-wide impact panel */}
+          <aside className={`hero-panel hero-panel--${themeClass}`}>
+            <div className="hero-panel-label">Currently</div>
+            <div className="hero-panel-role">Software Engineer, Research</div>
+            <div className="hero-panel-org">University at Buffalo · Feb 2026</div>
+            <div className="hero-panel-divider" />
+            <div className="hero-panel-label">Selected impact · across 3+ years</div>
+            <div className="hero-panel-stats">
+              {heroStats.map((stat, i) => (
+                <div
+                  key={stat.label}
+                  className="hero-stat animate-fade-in"
+                  style={{ animationDelay: `${0.15 + i * 0.1}s` }}
+                >
+                  <div className="hero-stat-value">{stat.value}</div>
+                  <div className="hero-stat-label">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </aside>
         </div>
 
         {/* Bottom Section */}
         <div className="home-bottom">
           {/* Social Links */}
           <div className="social-links">
-            <a 
-              href="https://github.com" 
-              target="_blank" 
+            <a
+              href={LINKS.github}
+              target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub"
               className={`social-link social-link--${themeClass}`}
             >
               <i className="devicon-github-original" aria-hidden="true" />
             </a>
-            <a 
-              href="https://linkedin.com" 
-              target="_blank" 
+            <a
+              href={LINKS.linkedin}
+              target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn"
               className={`social-link social-link--${themeClass}`}
             >
               <i className="devicon-linkedin-plain" aria-hidden="true" />
             </a>
-            <a 
-              href="mailto:asureshk@buffalo.edu"
+            <a
+              href={`mailto:${LINKS.email}`}
+              aria-label="Email"
               className={`social-link social-link--${themeClass}`}
             >
               <svg viewBox="0 0 24 24" fill="currentColor">

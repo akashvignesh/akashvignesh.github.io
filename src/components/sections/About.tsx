@@ -4,35 +4,48 @@ import SectionCard from '../SectionCard';
 import { useTheme } from '@/src/context/ThemeContext';
 
 const skills = [
-  { name: 'HTML5', iconClass: 'devicon-html5-plain colored', category: 'frontend' },
-  { name: 'CSS3', iconClass: 'devicon-css3-plain colored', category: 'frontend' },
-  { name: 'JavaScript', iconClass: 'devicon-javascript-plain colored', category: 'frontend' },
+  // Backend
+  { name: 'Java', iconClass: 'devicon-java-plain colored', category: 'backend' },
+  { name: 'Spring Boot', iconClass: 'devicon-spring-original colored', category: 'backend' },
+  { name: 'Python', iconClass: 'devicon-python-plain colored', category: 'backend' },
+  { name: 'Node.js', iconClass: 'devicon-nodejs-plain colored', category: 'backend' },
+  // ML / AI
+  { name: 'PyTorch', iconClass: 'devicon-pytorch-original colored', category: 'ml' },
+  { name: 'TensorFlow', iconClass: 'devicon-tensorflow-original colored', category: 'ml' },
+  { name: 'scikit-learn', iconClass: 'devicon-scikitlearn-plain colored', category: 'ml' },
+  { name: 'Pandas', iconClass: 'devicon-pandas-original colored', category: 'ml' },
+  { name: 'NumPy', iconClass: 'devicon-numpy-original colored', category: 'ml' },
+  // Data
+  { name: 'PostgreSQL', iconClass: 'devicon-postgresql-plain colored', category: 'data' },
+  { name: 'MySQL', iconClass: 'devicon-mysql-plain colored', category: 'data' },
+  { name: 'Oracle', iconClass: 'devicon-oracle-original colored', category: 'data' },
+  { name: 'Redis', iconClass: 'devicon-redis-plain colored', category: 'data' },
+  { name: 'R', iconClass: 'devicon-r-plain colored', category: 'data' },
+  // Frontend
   { name: 'TypeScript', iconClass: 'devicon-typescript-plain colored', category: 'frontend' },
   { name: 'React', iconClass: 'devicon-react-original colored', category: 'frontend' },
+  { name: 'Next.js', iconClass: 'devicon-nextjs-plain', category: 'frontend' },
+  { name: 'Angular', iconClass: 'devicon-angularjs-plain colored', category: 'frontend' },
   { name: 'Tailwind', iconClass: 'devicon-tailwindcss-original colored', category: 'frontend' },
-  { name: 'Node.js', iconClass: 'devicon-nodejs-plain colored', category: 'backend' },
-  { name: 'Express', iconClass: 'devicon-express-original', category: 'backend' },
-  { name: 'MongoDB', iconClass: 'devicon-mongodb-plain colored', category: 'database' },
-  { name: 'MySQL', iconClass: 'devicon-mysql-plain colored', category: 'database' },
-  { name: 'Python', iconClass: 'devicon-python-plain colored', category: 'backend' },
-  { name: 'Java', iconClass: 'devicon-java-plain colored', category: 'backend' },
-  { name: 'Spring', iconClass: 'devicon-spring-original colored', category: 'backend' },
-  { name: 'Git', iconClass: 'devicon-git-plain colored', category: 'tools' },
-  { name: 'Docker', iconClass: 'devicon-docker-plain colored', category: 'devops' },
+  // Cloud / DevOps
   { name: 'AWS', iconClass: 'devicon-amazonwebservices-plain-wordmark colored', category: 'devops' },
-  { name: 'GitHub', iconClass: 'devicon-github-original', category: 'tools' },
+  { name: 'Docker', iconClass: 'devicon-docker-plain colored', category: 'devops' },
+  { name: 'GitHub Actions', iconClass: 'devicon-githubactions-plain colored', category: 'devops' },
+  { name: 'Jenkins', iconClass: 'devicon-jenkins-plain colored', category: 'devops' },
+  // Tools
+  { name: 'Git', iconClass: 'devicon-git-plain colored', category: 'tools' },
   { name: 'Postman', iconClass: 'devicon-postman-plain colored', category: 'tools' },
-  { name: 'CI/CD', iconClass: 'devicon-githubactions-plain colored', category: 'devops' },
-  { name: 'Vercel', iconClass: 'devicon-vercel-original', category: 'devops' },
+  { name: 'Jupyter', iconClass: 'devicon-jupyter-plain colored', category: 'tools' },
 ];
 
 const categories = [
-  { id: 'all', label: 'All', icon: '🚀' },
-  { id: 'frontend', label: 'Frontend', icon: '🎨' },
-  { id: 'backend', label: 'Backend', icon: '⚙️' },
-  { id: 'database', label: 'Database', icon: '🗄️' },
-  { id: 'devops', label: 'DevOps', icon: '☁️' },
-  { id: 'tools', label: 'Tools', icon: '🔧' },
+  { id: 'all', label: 'All' },
+  { id: 'backend', label: 'Backend' },
+  { id: 'ml', label: 'ML / AI' },
+  { id: 'data', label: 'Data' },
+  { id: 'frontend', label: 'Frontend' },
+  { id: 'devops', label: 'Cloud / DevOps' },
+  { id: 'tools', label: 'Tools' },
 ];
 
 export default function About() {
@@ -40,7 +53,7 @@ export default function About() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState('all');
   const [displayedText, setDisplayedText] = useState('');
-  const fullText = "Building the future, one line of code at a time.";
+  const fullText = "From scalable backends to ML in production.";
   const textRef = useRef(0);
   const themeClass = theme === 'dark' ? 'dark' : 'light';
 
@@ -76,25 +89,26 @@ export default function About() {
           <span className="about-tagline-bracket">{">"}</span>
           <span>{displayedText}</span>
           <span className="about-tagline-cursor">|</span>
-          <span className="about-tagline-bracket">{"<"}</span>
         </div>
 
         {/* Bio with gradient highlight */}
         <div className="about-bio">
           <p className={`about-bio-text about-bio-text--${themeClass}`}>
-            I am a <span className={`about-highlight about-highlight--${themeClass}`}>Data Science</span> graduate student at the University at Buffalo with over 2 years of 
-            professional experience as a <span className={`about-highlight about-highlight--${themeClass}`}>Software Engineer</span> at Guardian Life.
+            I&apos;m a <span className={`about-highlight about-highlight--${themeClass}`}>Software Engineer</span> with 3+ years shipping production backend systems:
+            REST APIs, event-driven microservices, and distributed services in <span className={`about-highlight about-highlight--${themeClass}`}>Java / Spring Boot</span>.
+            At Guardian Life I cut API p95 latency from 455&nbsp;ms to 120&nbsp;ms, reduced MTTR from 5 days to 2, and mentored 7 engineers.
           </p>
           <p className={`about-bio-text about-bio-text--${themeClass}`}>
-            My expertise spans building <span className={`about-highlight about-highlight--secondary about-highlight--secondary-${themeClass}`}>scalable microservices</span>, 
-            optimizing backend performance, and developing <span className={`about-highlight about-highlight--secondary about-highlight--secondary-${themeClass}`}>machine learning models</span> for predictive analytics.
+            I&apos;m completing an <span className={`about-highlight about-highlight--secondary about-highlight--secondary-${themeClass}`}>MS at the University at Buffalo</span>,
+            and beyond backend I ship <span className={`about-highlight about-highlight--secondary about-highlight--secondary-${themeClass}`}>ML &amp; AI systems</span>: multimodal models,
+            LLM agents, and end-to-end data pipelines on AWS, turning models into production services.
           </p>
         </div>
 
         {/* Skills Section */}
         <div className="about-skills">
           <h3 className={`about-skills-title about-skills-title--${themeClass}`}>
-            <span className="about-skills-emoji">⚡</span> Tech Stack
+            Tech Stack
           </h3>
 
           {/* Category Filter */}
@@ -105,7 +119,6 @@ export default function About() {
                 onClick={() => setActiveCategory(cat.id)}
                 className={`about-category-btn about-category-btn--${themeClass} ${activeCategory === cat.id ? 'about-category-btn--active' : ''}`}
               >
-                <span className="about-category-icon">{cat.icon}</span>
                 {cat.label}
               </button>
             ))}

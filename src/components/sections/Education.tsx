@@ -1,6 +1,7 @@
 "use client";
 import SectionCard from '../SectionCard';
 import { useTheme } from '@/src/context/ThemeContext';
+import { asset } from '@/src/config/site';
 
 const education = [
   {
@@ -46,11 +47,13 @@ export default function Education() {
               <div className={`education-logo-section education-logo-section--${themeClass}`}>
                 <div className={`education-logo-wrapper education-logo-wrapper--${themeClass}`}>
                   <img
-                    src={edu.image}
+                    src={asset(edu.image)}
                     alt={edu.institution}
                     className="education-logo"
                     onError={(e) => {
-                      e.currentTarget.src = `https://via.placeholder.com/150/${theme === 'dark' ? '1e3a5f' : '0d9488'}/ffffff?text=${encodeURIComponent(edu.icon)}`;
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src =
+                        "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='150'%20height='150'%3E%3Crect%20width='150'%20height='150'%20fill='%231e3a5f'/%3E%3C/svg%3E";
                     }}
                   />
                 </div>
