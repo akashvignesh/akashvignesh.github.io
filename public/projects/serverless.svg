@@ -6,21 +6,21 @@
   </defs>
   <rect width="640" height="360" fill="#0b1120"/>
   <rect width="640" height="360" fill="url(#g5)"/>
-  <rect width="640" height="4" fill="#60a5fa"/>
+  <rect width="640" height="4" fill="#818cf8"/>
 
   <g font-family="monospace" font-size="13" text-anchor="middle">
-    <rect x="60"  y="120" width="92" height="56" rx="9" fill="#0f1b30" stroke="#60a5fa" stroke-opacity="0.7"/>
-    <text x="106" y="153" fill="#bfdbfe">Upload</text>
+    <rect x="60"  y="120" width="92" height="56" rx="9" fill="#0f1b30" stroke="#818cf8" stroke-opacity="0.7"/>
+    <text x="106" y="153" fill="#c7d2fe">Upload</text>
 
-    <rect x="190" y="120" width="92" height="56" rx="9" fill="#0f1b30" stroke="#60a5fa" stroke-opacity="0.7"/>
-    <text x="236" y="148" fill="#bfdbfe">API GW</text>
+    <rect x="190" y="120" width="92" height="56" rx="9" fill="#0f1b30" stroke="#818cf8" stroke-opacity="0.7"/>
+    <text x="236" y="148" fill="#c7d2fe">API GW</text>
     <text x="236" y="164" fill="#475569" font-size="10">+ Lambda</text>
 
-    <rect x="320" y="120" width="92" height="56" rx="9" fill="#0f1b30" stroke="#60a5fa"/>
-    <text x="366" y="153" fill="#bfdbfe">DynamoDB</text>
+    <rect x="320" y="120" width="92" height="56" rx="9" fill="#0f1b30" stroke="#818cf8"/>
+    <text x="366" y="153" fill="#c7d2fe">DynamoDB</text>
 
-    <rect x="450" y="120" width="92" height="56" rx="9" fill="#0f1b30" stroke="#60a5fa" stroke-opacity="0.7"/>
-    <text x="496" y="148" fill="#bfdbfe">EC2</text>
+    <rect x="450" y="120" width="92" height="56" rx="9" fill="#0f1b30" stroke="#818cf8" stroke-opacity="0.7"/>
+    <text x="496" y="148" fill="#c7d2fe">EC2</text>
     <text x="496" y="164" fill="#475569" font-size="10">on-demand</text>
   </g>
 
@@ -35,9 +35,9 @@
   <path d="M366 192 l -4 9 h 8 z" fill="#334155"/>
   <text x="430" y="232" fill="#475569" font-family="monospace" font-size="11" text-anchor="middle">stream trigger</text>
 
-  <ellipse cx="300" cy="262" rx="34" ry="9" fill="#0f1b30" stroke="#60a5fa"/>
-  <path d="M266 262 v 22 a 34 9 0 0 0 68 0 v -22" fill="#0f1b30" stroke="#60a5fa"/>
-  <text x="300" y="292" text-anchor="middle" fill="#bfdbfe" font-family="monospace" font-size="13">S3</text>
+  <ellipse cx="300" cy="262" rx="34" ry="9" fill="#0f1b30" stroke="#818cf8"/>
+  <path d="M266 262 v 22 a 34 9 0 0 0 68 0 v -22" fill="#0f1b30" stroke="#818cf8"/>
+  <text x="300" y="292" text-anchor="middle" fill="#c7d2fe" font-family="monospace" font-size="13">S3</text>
 
   <text x="60" y="324" fill="#64748b" font-family="monospace" font-size="17">event-driven pipeline · AWS CDK</text>
 </svg>

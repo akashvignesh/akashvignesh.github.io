@@ -6,26 +6,26 @@
   </defs>
   <rect width="640" height="360" fill="#0b1120"/>
   <rect width="640" height="360" fill="url(#g2)"/>
-  <rect width="640" height="4" fill="#34d399"/>
+  <rect width="640" height="4" fill="#818cf8"/>
 
   <line x1="70" y1="270" x2="430" y2="270" stroke="#1e293b" stroke-width="2"/>
-  <rect x="86"  y="210" width="34" height="60"  rx="4" fill="#1e3a34"/>
-  <rect x="136" y="180" width="34" height="90"  rx="4" fill="#1e3a34"/>
-  <rect x="186" y="150" width="34" height="120" rx="4" fill="#34d399" fill-opacity="0.75"/>
-  <rect x="236" y="196" width="34" height="74"  rx="4" fill="#1e3a34"/>
-  <rect x="286" y="130" width="34" height="140" rx="4" fill="#34d399" fill-opacity="0.75"/>
-  <rect x="336" y="172" width="34" height="98"  rx="4" fill="#1e3a34"/>
-  <rect x="386" y="150" width="34" height="120" rx="4" fill="#1e3a34"/>
+  <rect x="86"  y="210" width="34" height="60"  rx="4" fill="#1e293b"/>
+  <rect x="136" y="180" width="34" height="90"  rx="4" fill="#1e293b"/>
+  <rect x="186" y="150" width="34" height="120" rx="4" fill="#818cf8" fill-opacity="0.75"/>
+  <rect x="236" y="196" width="34" height="74"  rx="4" fill="#1e293b"/>
+  <rect x="286" y="130" width="34" height="140" rx="4" fill="#818cf8" fill-opacity="0.75"/>
+  <rect x="336" y="172" width="34" height="98"  rx="4" fill="#1e293b"/>
+  <rect x="386" y="150" width="34" height="120" rx="4" fill="#1e293b"/>
 
   <polyline points="103,206 153,176 203,150 253,192 303,128 353,168 403,150"
-    stroke="#6ee7b7" stroke-width="2.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
-  <circle cx="103" cy="206" r="3.5" fill="#6ee7b7"/>
-  <circle cx="303" cy="128" r="3.5" fill="#6ee7b7"/>
-  <circle cx="403" cy="150" r="3.5" fill="#6ee7b7"/>
+    stroke="#a5b4fc" stroke-width="2.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="103" cy="206" r="3.5" fill="#a5b4fc"/>
+  <circle cx="303" cy="128" r="3.5" fill="#a5b4fc"/>
+  <circle cx="403" cy="150" r="3.5" fill="#a5b4fc"/>
 
-  <circle cx="510" cy="180" r="52" fill="none" stroke="#34d399" stroke-width="3"/>
-  <circle cx="510" cy="180" r="6" fill="#34d399"/>
-  <g stroke="#1e3a34" stroke-width="2">
+  <circle cx="510" cy="180" r="52" fill="none" stroke="#818cf8" stroke-width="3"/>
+  <circle cx="510" cy="180" r="6" fill="#818cf8"/>
+  <g stroke="#1e293b" stroke-width="2">
     <line x1="510" y1="180" x2="510" y2="130"/>
     <line x1="510" y1="180" x2="553" y2="205"/>
     <line x1="510" y1="180" x2="467" y2="205"/>

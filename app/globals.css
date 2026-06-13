@@ -6,40 +6,51 @@
    ============================================ */
 
 :root {
-  /* Light theme (Day) - Warm neutral + Indigo */
-  --background: #faf9f7;
+  /* ===== LIGHT (Day) — Warm paper + Indigo, Tactile/Elevated ===== */
+  --bg: #f6f4f0;            /* warm paper */
+  --background: #f6f4f0;    /* alias used by body + components */
   --foreground: #1c1917;
-  --grid-color: rgba(79, 70, 229, 0.05);
 
-  /* Primary accent - Indigo */
+  /* Elevation surfaces */
+  --surface-1: #ffffff;     /* cards */
+  --surface-2: #ffffff;     /* raised (distinguished by shadow) */
+  --surface-sunken: #f1eee9;/* wells: logos, code, insets */
+
+  --grid-color: rgba(79, 70, 229, 0.045);
+
+  /* Accent — Indigo / Violet */
   --primary: #4f46e5;
   --primary-light: #6366f1;
   --primary-dark: #4338ca;
-
-  /* Secondary accent - Violet */
   --secondary: #7c3aed;
 
-  /* Text colors */
+  /* Text */
   --text-primary: #1c1917;
   --text-secondary: #57534e;
   --text-muted: #78716c;
 
-  /* Card and borders */
-  --card-bg: rgba(255, 255, 255, 0.8);
-  --card-bg-solid: #ffffff;
-  --border-color: #e7e5e4;
+  /* Borders + focus ring */
+  --border: #e8e3da;        /* warm */
+  --border-color: #e8e3da;  /* alias */
   --border-hover: #4f46e5;
+  --ring: rgba(79, 70, 229, 0.35);
 
-  /* Home page accent */
+  /* Tactile layered shadows (warm-tinted, soft) */
+  --shadow-sm: 0 1px 2px rgba(28, 25, 23, 0.06), 0 1px 3px rgba(28, 25, 23, 0.05);
+  --shadow-md: 0 4px 10px rgba(28, 25, 23, 0.07), 0 12px 26px rgba(28, 25, 23, 0.06);
+  --shadow-lg: 0 10px 24px rgba(79, 70, 229, 0.13), 0 22px 48px rgba(28, 25, 23, 0.11);
+
+  /* Legacy aliases (kept for components not yet on tokens) */
+  --card-bg: #ffffff;
+  --card-bg-solid: #ffffff;
+  --glow-color: rgba(79, 70, 229, 0.3);
+  --shadow-color: rgba(28, 25, 23, 0.12);
   --home-accent: #4f46e5;
   --home-accent-shadow: rgba(79, 70, 229, 0.2);
-
-  /* Glow effects */
-  --glow-color: rgba(79, 70, 229, 0.3);
-
-  /* Ambient page glows (day) */
   --glow-1: rgba(99, 102, 241, 0.1);
   --glow-2: rgba(124, 58, 237, 0.06);
+
+  --radius: 1rem;
 }
 
 @theme inline {
@@ -49,37 +60,50 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Dark theme (Night) - Near-black + Indigo */
+/* ===== DARK (Night) — Indigo-tinted near-black, Tactile/Elevated ===== */
 .dark {
+  --bg: #0a0a0f;
   --background: #0a0a0f;
   --foreground: #fafafa;
+
+  /* Elevation surfaces — indigo-tinted, progressively lighter for depth */
+  --surface-1: #14141d;     /* cards */
+  --surface-2: #1c1c28;     /* raised / hover */
+  --surface-sunken: #0e0e16;/* wells */
+
   --grid-color: rgba(129, 140, 248, 0.05);
 
-  /* Primary accent - Indigo (brighter for dark bg) */
+  /* Accent — brighter indigo for dark bg (more chroma reads well on dark) */
   --primary: #818cf8;
   --primary-light: #a5b4fc;
   --primary-dark: #6366f1;
-
-  /* Secondary accent - Violet */
   --secondary: #a78bfa;
 
-  /* Text colors */
+  /* Text */
   --text-primary: #fafafa;
   --text-secondary: #a1a1aa;
   --text-muted: #71717a;
 
-  /* Card and borders */
-  --card-bg: rgba(24, 24, 32, 0.7);
-  --card-bg-solid: #16161e;
-  --border-color: rgba(255, 255, 255, 0.1);
+  /* Borders + focus ring */
+  --border: rgba(129, 140, 248, 0.14);
+  --border-color: rgba(129, 140, 248, 0.14);
   --border-hover: #818cf8;
+  --ring: rgba(129, 140, 248, 0.5);
 
-  /* Home page accent */
+  /* Dark: deep soft shadow + a subtle indigo lift-ring on raise */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(129, 140, 248, 0.16);
+
+  /* Legacy aliases */
+  --card-bg: #14141d;
+  --card-bg-solid: #16161e;
+  --glow-color: rgba(129, 140, 248, 0.4);
+  --shadow-color: rgba(0, 0, 0, 0.5);
   --home-accent: #818cf8;
   --home-accent-shadow: rgba(129, 140, 248, 0.25);
-
-  /* Glow effects */
-  --glow-color: rgba(129, 140, 248, 0.4);
+  --glow-1: rgba(99, 102, 241, 0.2);
+  --glow-2: rgba(124, 58, 237, 0.13);
 }
 
 /* ============================================
@@ -96,7 +120,7 @@ body {
   background-size: clamp(20px, 4vw, 50px) clamp(20px, 4vw, 50px);
   background-attachment: fixed;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -170,5 +194,35 @@ body {
 .hero-panel-label,
 .hero-panel-org {
   font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/* ============================================
+   ACCESSIBILITY — focus rings + reduced motion
+   ============================================ */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* keep scroll-revealed sections from getting stuck hidden */
+  .section-card--hidden {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 

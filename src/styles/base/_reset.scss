@@ -3,55 +3,10 @@
 // ============================================
 
 // ============================================
-// CSS CUSTOM PROPERTIES (for Tailwind compatibility)
+// Theme tokens live in ONE place: app/globals.css (:root + .dark).
+// Do NOT redefine them here — a second :root used to override globals.css
+// (load order) and reintroduced the old green palette.
 // ============================================
-:root {
-  // Light theme (Day) - Fresh Emerald
-  --background: #f8fdf8;
-  --foreground: #111827;
-  --grid-color: rgba(79, 70, 229, 0.08);
-  
-  --primary: #4f46e5;
-  --primary-light: #818cf8;
-  --primary-dark: #4338ca;
-  --secondary: #7c3aed;
-  
-  --text-primary: #111827;
-  --text-secondary: #4b5563;
-  --text-muted: #6b7280;
-  
-  --card-bg: rgba(255, 255, 255, 0.95);
-  --card-bg-solid: #ffffff;
-  --border-color: #e0e7ff;
-  --border-hover: #4f46e5;
-  
-  --glow-color: rgba(79, 70, 229, 0.4);
-  --shadow-color: rgba(79, 70, 229, 0.25);
-}
-
-.dark {
-  // Dark theme (Night) - Cyber Blue
-  --background: #0a0a0f;
-  --foreground: #ffffff;
-  --grid-color: rgba(129, 140, 248, 0.06);
-  
-  --primary: #818cf8;
-  --primary-light: #a5b4fc;
-  --primary-dark: #6366f1;
-  --secondary: #a78bfa;
-  
-  --text-primary: #ffffff;
-  --text-secondary: #d1d5db;
-  --text-muted: #9ca3af;
-  
-  --card-bg: rgba(10, 10, 15, 0.85);
-  --card-bg-solid: #1a1a22;
-  --border-color: #1e1b4b;
-  --border-hover: #818cf8;
-  
-  --glow-color: rgba(129, 140, 248, 0.5);
-  --shadow-color: rgba(99, 102, 241, 0.35);
-}
 
 // ============================================
 // BASE STYLES

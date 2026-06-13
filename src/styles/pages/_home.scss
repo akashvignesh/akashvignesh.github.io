@@ -14,27 +14,23 @@
   position: absolute;
   inset: 0;
 
-  // Ambient, full-bleed atmosphere: faint technical grid + soft indigo/violet
-  // glows. Fills the viewport around the centered content so it reads
-  // intentional, not empty (à la Linear / Vercel landing pages).
+  // Transparent (no grid, no opaque fill) so the body's single site-wide
+  // fixed grid runs continuously through the hero AND every section — no
+  // seam from two mismatched grids. Only the soft indigo/violet glows live
+  // here, masked to fade before the bottom edge so nothing clips at the seam.
+  -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 68%, transparent 100%);
+
   &--light {
-    background-color: #faf9f7;
     background-image:
       radial-gradient(55% 45% at 82% 6%, rgba(99, 102, 241, 0.1), transparent 70%),
-      radial-gradient(45% 45% at 6% 94%, rgba(124, 58, 237, 0.06), transparent 70%),
-      linear-gradient(rgba(79, 70, 229, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(79, 70, 229, 0.04) 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 46px 46px, 46px 46px;
+      radial-gradient(45% 45% at 6% 94%, rgba(124, 58, 237, 0.06), transparent 70%);
   }
 
   &--dark {
-    background-color: #0a0a0f;
     background-image:
       radial-gradient(55% 45% at 82% 6%, rgba(99, 102, 241, 0.2), transparent 70%),
-      radial-gradient(45% 45% at 6% 94%, rgba(124, 58, 237, 0.13), transparent 70%),
-      linear-gradient(rgba(129, 140, 248, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(129, 140, 248, 0.05) 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 46px 46px, 46px 46px;
+      radial-gradient(45% 45% at 6% 94%, rgba(124, 58, 237, 0.13), transparent 70%);
   }
 }
 
@@ -803,29 +799,9 @@
 
 // ============================================
 // BOTTOM SEAM
-// Soft transition band (not a hard rule) so the hero dissolves into the
-// section below instead of ending at a visible line.
+// No divider needed: the body's continuous fixed grid + the masked hero
+// glows already blend the hero into the next section seamlessly.
 // ============================================
 .bottom-line {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 160px;
-  pointer-events: none;
-  z-index: 2;
-
-  // Vertical fade into the page background, with a faint accent hairline
-  // riding the very bottom for a polished edge.
-  &--light {
-    background:
-      linear-gradient(to right, transparent, rgba(79, 70, 229, 0.18), transparent) bottom / 100% 1px no-repeat,
-      linear-gradient(to bottom, transparent, #faf9f7);
-  }
-
-  &--dark {
-    background:
-      linear-gradient(to right, transparent, rgba(129, 140, 248, 0.22), transparent) bottom / 100% 1px no-repeat,
-      linear-gradient(to bottom, transparent, #0a0a0f);
-  }
+  display: none;
 }

@@ -60,7 +60,7 @@ const timeline: Company[] = [
         highlights: [
           { metric: 'MTTR 5d → 2d', text: 'Drove incident response on a distributed eligibility platform serving 10M+ member records at 99.9% SLA and 500+ concurrent sessions, safeguarding $2M+/mo in policy transactions with real-time Splunk dashboards and AWS CloudWatch alarms.' },
           { metric: '3× faster ships', text: 'Cut release cycle from 1 hour to 15 minutes by helping decompose a monolith into event-driven microservices with isolated CI/CD pipelines.' },
-          { metric: 'Mentored 7', text: 'Raised code quality across my team’s services by enforcing SonarQube quality gates, reviewing PRs, and mentoring 7 engineers — lifting PR throughput 20% and cutting cyclomatic complexity 75%.' },
+          { metric: 'Mentored 7', text: 'Raised code quality across my team’s services by enforcing SonarQube quality gates, reviewing PRs, and mentoring 7 engineers, lifting PR throughput 20% and cutting cyclomatic complexity 75%.' },
         ],
       },
       {

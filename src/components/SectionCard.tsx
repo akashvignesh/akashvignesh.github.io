@@ -39,24 +39,6 @@ export default function SectionCard({ title, children, icon, id }: SectionCardPr
       id={id} 
       className={`section-card section-card--${themeClass} ${isVisible ? 'section-card--visible' : 'section-card--hidden'}`}
     >
-      {/* Hover Gradient Overlay */}
-      <div className={`section-card-overlay section-card-overlay--${themeClass}`} />
-      
-      {/* Floating Particles */}
-      <div className="section-card-particles">
-        {[...Array(3)].map((_, i) => (
-          <div
-            key={i}
-            className={`section-card-particle section-card-particle--${themeClass}`}
-            style={{
-              left: `${20 + i * 30}%`,
-              top: `${10 + i * 25}%`,
-              animationDelay: `${i * 2}s`,
-            }}
-          />
-        ))}
-      </div>
-
       {/* Header */}
       <div className="section-card-header">
         {icon && (

@@ -16,8 +16,8 @@ export default function TopNav({ visible = true }: TopNavProps) {
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
-    { id: 'education', label: 'Education' },
     { id: 'experience', label: 'Experience' },
+    { id: 'education', label: 'Education' },
     { id: 'projects', label: 'Projects' },
     { id: 'contact', label: 'Contact' },
   ];
@@ -36,7 +36,7 @@ export default function TopNav({ visible = true }: TopNavProps) {
       }
 
       // Find which section is currently most visible
-      const sections = ['about', 'education', 'experience', 'projects', 'contact'];
+      const sections = ['about', 'experience', 'education', 'projects', 'contact'];
       
       for (let i = sections.length - 1; i >= 0; i--) {
         const element = document.getElementById(sections[i]);

@@ -4,14 +4,13 @@ import { useTheme } from "@/src/context/ThemeContext";
 import { asset } from "@/src/config/site";
 import { LINKS } from "@/src/config/links";
 
-// Tracks the rotating role badge cycles through; covers the full range
-// (backend SWE → ML/AI → data engineering → analytics).
+// Rotating role badge — kept to three coherent, adjacent engineering
+// identities under the "Software & ML/AI Engineer" umbrella. Deliberately
+// excludes data-analyst framing, which reads as a different/lower track.
 const ROLES = [
   'Software Engineer',
   'ML Engineer',
   'AI Engineer',
-  'Data Engineer',
-  'Data & BI Analyst',
 ];
 
 // Proof metrics spanning backend performance, ML, and scale.

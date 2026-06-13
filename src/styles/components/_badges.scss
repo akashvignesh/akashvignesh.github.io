@@ -34,13 +34,14 @@
     border-color: rgba(129, 140, 248, 0.3);
   }
   
-  // Status dot
+  // Status dot (indigo to match the accent; the green "available" dot
+  // lives only in the hero status badge in _home.scss)
   &::before {
     content: '';
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 50%;
-    background: #22c55e;
+    background: #6366f1;
     animation: pulse 2s ease-in-out infinite;
   }
 }

@@ -2,7 +2,7 @@
 import SectionCard from '../SectionCard';
 import { useTheme } from '@/src/context/ThemeContext';
 
-// Curated to depth, grouped by area — the things worth defending in an
+// Curated to depth, grouped by area: the things worth defending in an
 // interview, not an exhaustive icon dump.
 const skillGroups = [
   {
@@ -65,14 +65,14 @@ export default function About() {
         {/* Bio */}
         <div className="about-bio">
           <p className={`about-bio-text about-bio-text--${themeClass}`}>
-            I&apos;m a <span className={`about-highlight about-highlight--${themeClass}`}>Software Engineer</span> with 3+ years shipping production backends —
+            I&apos;m a <span className={`about-highlight about-highlight--${themeClass}`}>Software Engineer</span> with 3+ years shipping production backends:
             REST APIs, event-driven microservices, and distributed services in <span className={`about-highlight about-highlight--${themeClass}`}>Java / Spring Boot</span>.
             At Guardian Life I cut API p95 latency 455&nbsp;→&nbsp;120&nbsp;ms, halved MTTR (5d&nbsp;→&nbsp;2d), and mentored 7 engineers.
           </p>
           <p className={`about-bio-text about-bio-text--${themeClass}`}>
             I&apos;m finishing an <span className={`about-highlight about-highlight--secondary about-highlight--secondary-${themeClass}`}>MS in Engineering Science</span> at the University at Buffalo.
-            Beyond backend I ship <span className={`about-highlight about-highlight--secondary about-highlight--secondary-${themeClass}`}>ML &amp; AI systems</span> — multimodal models,
-            LLM agents, and end-to-end data pipelines on AWS — turning models into production services.
+            Beyond backend I ship <span className={`about-highlight about-highlight--secondary about-highlight--secondary-${themeClass}`}>ML &amp; AI systems</span>: multimodal models,
+            LLM agents, and end-to-end data pipelines on AWS, turning models into production services.
           </p>
         </div>
 

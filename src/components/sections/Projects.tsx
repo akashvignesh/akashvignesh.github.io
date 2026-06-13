@@ -17,7 +17,7 @@ interface Project {
   featured: boolean;
   outcome: string;        // headline result, shown first
   description: string;
-  hard?: string;          // "what made it hard" — featured cards only
+  hard?: string;          // "what made it hard", featured cards only
   tags: string[];
   image: string;
   period: string;
@@ -37,7 +37,7 @@ const projects: Project[] = [
     featured: true,
     outcome: '+26% throughput · <50 ms p95 inference',
     description: 'A multimodal service that predicts industrial pump-failure risk by fusing real-time sensor telemetry with inspection images, served behind a FastAPI endpoint.',
-    hard: 'Aligning two very different modalities — tabular telemetry (LightGBM) and images (CLIP ViT-B/32) — through a trained gated cross-modal Transformer fusion layer without label leakage.',
+    hard: 'Aligning two very different modalities, tabular telemetry (LightGBM) and images (CLIP ViT-B/32), through a trained gated cross-modal Transformer fusion layer without label leakage.',
     tags: ['Python', 'FastAPI', 'PyTorch', 'CLIP', 'LightGBM', 'Docker'],
     image: '/projects/pump.svg',
     period: '2026',
@@ -49,7 +49,7 @@ const projects: Project[] = [
     track: 'AI Engineering',
     category: 'ml',
     featured: true,
-    outcome: 'Completes real web tasks from one prompt — zero hand-coded selectors',
+    outcome: 'Completes real web tasks from one prompt, with zero hand-coded selectors',
     description: 'An LLM agent that drives a real Chrome session over CDP to complete web tasks from natural language: it snapshots each page, picks one action at a time, then verifies and repeats.',
     hard: 'A provider-agnostic agentic loop (Bedrock / Ollama / NVIDIA) with set-of-marks screenshots, a loop-guard that halts repeated failures, and a per-page-fingerprint cache that replays known pages with zero LLM calls.',
     tags: ['TypeScript', 'Node.js', 'LLM Agents', 'Chrome DevTools Protocol', 'AWS Bedrock'],
@@ -93,9 +93,9 @@ const projects: Project[] = [
     category: 'ml',
     featured: false,
     outcome: 'Benchmarked multiple classifiers to pick the best diabetes-risk model',
-    description: 'Predicts diabetes risk from patient health indicators — engineered features, compared several classification models, and selected the strongest performer, packaged with a Dockerized app.',
+    description: 'Predicts diabetes risk from patient health indicators: engineered features, compared several classification models, and selected the strongest performer, packaged with a Dockerized app.',
     tags: ['Python', 'scikit-learn', 'Pandas', 'Jupyter', 'Docker'],
-    image: '/projects/diabetes.png',
+    image: '/projects/diabetes.svg',
     period: '2025',
     repos: [{ label: 'GitHub', url: 'https://github.com/akashvignesh/diseasePredictionSystem' }],
   },
@@ -106,7 +106,7 @@ const projects: Project[] = [
     category: 'ml',
     featured: false,
     outcome: 'Grounded Q&A over a PDF via hybrid semantic + vector retrieval',
-    description: 'A Retrieval-Augmented Generation service that answers natural-language questions about a document: parses the PDF, embeds it into ChromaDB, runs hybrid semantic + vector search, and grounds Google Gemini responses — served behind FastAPI and Dockerized.',
+    description: 'A Retrieval-Augmented Generation service that answers natural-language questions about a document: parses the PDF, embeds it into ChromaDB, runs hybrid semantic + vector search, and grounds Google Gemini responses, served behind FastAPI and Dockerized.',
     tags: ['Python', 'LangChain', 'ChromaDB', 'FastAPI', 'Gemini', 'Docker'],
     image: '/projects/rag.svg',
     period: '2026',
@@ -196,7 +196,7 @@ export default function Projects() {
                 <p className={`pj-desc pj-desc--${themeClass}`}>{p.description}</p>
                 {p.hard && (
                   <p className={`pj-hard pj-hard--${themeClass}`}>
-                    <span className="pj-hard-label">Hard part —</span> {p.hard}
+                    <span className="pj-hard-label">Hard part:</span> {p.hard}
                   </p>
                 )}
                 <div className="pj-tags">

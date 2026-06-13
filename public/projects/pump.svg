@@ -6,31 +6,31 @@
   </defs>
   <rect width="640" height="360" fill="#0b1120"/>
   <rect width="640" height="360" fill="url(#g)"/>
-  <rect width="640" height="4" fill="#22d3ee"/>
+  <rect width="640" height="4" fill="#818cf8"/>
 
-  <rect x="70" y="92" width="150" height="70" rx="8" fill="#0f1b30" stroke="#22d3ee" stroke-opacity="0.5"/>
-  <polyline points="84,140 104,120 124,148 144,108 164,134 184,116 206,140" stroke="#22d3ee" stroke-width="2.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="70" y="92" width="150" height="70" rx="8" fill="#0f1b30" stroke="#818cf8" stroke-opacity="0.5"/>
+  <polyline points="84,140 104,120 124,148 144,108 164,134 184,116 206,140" stroke="#818cf8" stroke-width="2.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
 
   <rect x="70" y="196" width="150" height="70" rx="8" fill="#0f1b30" stroke="#475569" stroke-opacity="0.6"/>
   <rect x="86" y="210" width="26" height="20" rx="3" fill="#1e3a5f"/>
-  <rect x="118" y="210" width="26" height="20" rx="3" fill="#22d3ee" fill-opacity="0.7"/>
+  <rect x="118" y="210" width="26" height="20" rx="3" fill="#818cf8" fill-opacity="0.7"/>
   <rect x="150" y="210" width="26" height="20" rx="3" fill="#1e3a5f"/>
   <rect x="86" y="234" width="26" height="20" rx="3" fill="#1e3a5f"/>
   <rect x="118" y="234" width="26" height="20" rx="3" fill="#1e3a5f"/>
-  <rect x="150" y="234" width="26" height="20" rx="3" fill="#22d3ee" fill-opacity="0.5"/>
+  <rect x="150" y="234" width="26" height="20" rx="3" fill="#818cf8" fill-opacity="0.5"/>
 
   <path d="M226 127 C 270 127, 270 170, 298 178" stroke="#334155" stroke-width="2" fill="none"/>
   <path d="M226 231 C 270 231, 270 188, 298 186" stroke="#334155" stroke-width="2" fill="none"/>
 
-  <rect x="300" y="150" width="64" height="64" rx="10" transform="rotate(45 332 182)" fill="#0f1b30" stroke="#22d3ee"/>
-  <line x1="332" y1="168" x2="332" y2="196" stroke="#22d3ee" stroke-width="3" stroke-linecap="round"/>
-  <line x1="318" y1="182" x2="346" y2="182" stroke="#22d3ee" stroke-width="3" stroke-linecap="round"/>
+  <rect x="300" y="150" width="64" height="64" rx="10" transform="rotate(45 332 182)" fill="#0f1b30" stroke="#818cf8"/>
+  <line x1="332" y1="168" x2="332" y2="196" stroke="#818cf8" stroke-width="3" stroke-linecap="round"/>
+  <line x1="318" y1="182" x2="346" y2="182" stroke="#818cf8" stroke-width="3" stroke-linecap="round"/>
 
   <path d="M372 182 H 450" stroke="#334155" stroke-width="2" fill="none"/>
   <path d="M450 182 l -10 -5 v 10 z" fill="#334155"/>
 
   <path d="M474 204 A 58 58 0 0 1 590 204" stroke="#1e293b" stroke-width="10" fill="none"/>
-  <path d="M474 204 A 58 58 0 0 1 538 152" stroke="#22d3ee" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M474 204 A 58 58 0 0 1 538 152" stroke="#818cf8" stroke-width="10" fill="none" stroke-linecap="round"/>
   <circle cx="532" cy="204" r="5" fill="#e2e8f0"/>
   <line x1="532" y1="204" x2="560" y2="170" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
 

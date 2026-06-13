@@ -20,11 +20,11 @@ export default function MainLayout() {
             <section id="about" className="main-section">
               <About />
             </section>
-            <section id="education" className="main-section">
-              <Education />
-            </section>
             <section id="experience" className="main-section">
               <Experience />
+            </section>
+            <section id="education" className="main-section">
+              <Education />
             </section>
             <section id="projects" className="main-section">
               <Projects />

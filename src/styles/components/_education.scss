@@ -19,17 +19,15 @@
   align-items: flex-start;
   padding: 1rem 1.1rem;
   border-radius: 0.85rem;
-  transition: border-color 0.3s ease;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 
-  &--light {
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    &:hover { border-color: #c7d2fe; }
-  }
-  &--dark {
-    background: rgba(31, 41, 55, 0.5);
-    border: 1px solid #374151;
-    &:hover { border-color: rgba(99, 102, 241, 0.4); }
+  &:hover {
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
   }
 }
 
