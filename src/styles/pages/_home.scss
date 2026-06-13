@@ -802,20 +802,30 @@
 }
 
 // ============================================
-// BOTTOM LINE
+// BOTTOM SEAM
+// Soft transition band (not a hard rule) so the hero dissolves into the
+// section below instead of ending at a visible line.
 // ============================================
 .bottom-line {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 1px;
-  
+  height: 160px;
+  pointer-events: none;
+  z-index: 2;
+
+  // Vertical fade into the page background, with a faint accent hairline
+  // riding the very bottom for a polished edge.
   &--light {
-    background: linear-gradient(to right, transparent, rgba(79, 70, 229, 0.4), transparent);
+    background:
+      linear-gradient(to right, transparent, rgba(79, 70, 229, 0.18), transparent) bottom / 100% 1px no-repeat,
+      linear-gradient(to bottom, transparent, #faf9f7);
   }
 
   &--dark {
-    background: linear-gradient(to right, transparent, rgba(129, 140, 248, 0.4), transparent);
+    background:
+      linear-gradient(to right, transparent, rgba(129, 140, 248, 0.22), transparent) bottom / 100% 1px no-repeat,
+      linear-gradient(to bottom, transparent, #0a0a0f);
   }
 }

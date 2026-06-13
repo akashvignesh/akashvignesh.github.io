@@ -45,15 +45,8 @@ export default function SideBarProfile() {
 
         <div className="sidebar-contact-item">
           <div>
-            <p className={`sidebar-contact-label sidebar-contact-label--${themeClass}`}>Phone</p>
-            <a href="tel:+17167090514" className={`sidebar-contact-value sidebar-contact-value--${themeClass}`}>+1 (716) 709-0514</a>
-          </div>
-        </div>
-
-        <div className="sidebar-contact-item">
-          <div>
             <p className={`sidebar-contact-label sidebar-contact-label--${themeClass}`}>Location</p>
-            <p className={`sidebar-contact-text sidebar-contact-text--${themeClass}`}>New York, USA</p>
+            <p className={`sidebar-contact-text sidebar-contact-text--${themeClass}`}>New York, USA · Open to relocate</p>
           </div>
         </div>
 

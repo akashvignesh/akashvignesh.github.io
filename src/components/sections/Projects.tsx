@@ -4,106 +4,155 @@ import SectionCard from '../SectionCard';
 import { useTheme } from '@/src/context/ThemeContext';
 import { asset } from '@/src/config/site';
 
+interface Repo {
+  label: string;
+  url: string;
+}
+
 interface Project {
   id: number;
   title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  achievements: string[];
-  period: string;
   track: string;
-  link?: string;
-  github?: string;
+  category: 'ml' | 'data' | 'cloud';
+  featured: boolean;
+  outcome: string;        // headline result, shown first
+  description: string;
+  hard?: string;          // "what made it hard" — featured cards only
+  tags: string[];
+  image: string;
+  period: string;
+  repos: Repo[];          // one or more GitHub links
+  demo?: string;          // optional live demo
 }
 
-const initialProjects: Project[] = [
+// Two standouts are featured large; the rest are compact. Bike + Taxi
+// demand forecasting are merged into one case study (same stack, same
+// shape) so the section reads as range, not repetition.
+const projects: Project[] = [
   {
     id: 1,
-    title: 'Pump Fault Risk Prediction Service',
-    description: 'A multimodal service that predicts industrial pump failure risk by fusing real-time sensor telemetry with inspection images.',
+    title: 'Multimodal Pump-Fault Prediction',
+    track: 'AI / ML Engineering',
+    category: 'ml',
+    featured: true,
+    outcome: '+26% throughput · <50 ms p95 inference',
+    description: 'A multimodal service that predicts industrial pump-failure risk by fusing real-time sensor telemetry with inspection images, served behind a FastAPI endpoint.',
+    hard: 'Aligning two very different modalities — tabular telemetry (LightGBM) and images (CLIP ViT-B/32) — through a trained gated cross-modal Transformer fusion layer without label leakage.',
+    tags: ['Python', 'FastAPI', 'PyTorch', 'CLIP', 'LightGBM', 'Docker'],
     image: '/projects/pump.svg',
-    tags: ['Python', 'FastAPI', 'PyTorch', 'LightGBM', 'CLIP', 'Docker'],
     period: '2026',
-    achievements: [
-      'Delivered +26% throughput and 49% lower p95 latency vs. a single-modal LightGBM baseline at 75 concurrent users, with sub-50 ms inference at peak load.',
-      'Fused sensor telemetry (LightGBM) with pump inspection images (CLIP ViT-B/32) through a trained Transformer cross-modal and gated-attention fusion layer.',
-      'Served predictions through a FastAPI service with health checks and OpenAPI docs, containerized with Docker for reproducible deployment.',
-    ],
-    track: 'ML / AI Engineering',
-    github: 'https://github.com/akashvignesh/multimodal-pump-fault-prediction',
+    repos: [{ label: 'GitHub', url: 'https://github.com/akashvignesh/multimodal-pump-fault-prediction' }],
   },
   {
     id: 2,
-    title: 'Bike Ride Demand Prediction',
-    description: 'An end-to-end MLOps pipeline that forecasts 6-hourly Citi Bike demand for NYC’s busiest stations, with automated retraining.',
-    image: '/projects/bike.svg',
-    tags: ['Python', 'LightGBM', 'Hopsworks', 'Streamlit', 'GitHub Actions', 'AWS S3'],
+    title: 'Agentic Browser Automation',
+    track: 'AI Engineering',
+    category: 'ml',
+    featured: true,
+    outcome: 'Completes real web tasks from one prompt — zero hand-coded selectors',
+    description: 'An LLM agent that drives a real Chrome session over CDP to complete web tasks from natural language: it snapshots each page, picks one action at a time, then verifies and repeats.',
+    hard: 'A provider-agnostic agentic loop (Bedrock / Ollama / NVIDIA) with set-of-marks screenshots, a loop-guard that halts repeated failures, and a per-page-fingerprint cache that replays known pages with zero LLM calls.',
+    tags: ['TypeScript', 'Node.js', 'LLM Agents', 'Chrome DevTools Protocol', 'AWS Bedrock'],
+    image: '/projects/agentic.svg',
     period: '2026',
-    achievements: [
-      'Ingested raw Citi Bike trip data from a public S3 bucket and engineered 112 lag features across 6-hour bins for the busiest stations.',
-      'Stored features in a Hopsworks feature store and trained a LightGBM model with time-series cross-validation for reproducible, versioned pipelines.',
-      'Automated the feature and inference pipelines on a schedule with GitHub Actions and visualized 2024 actuals vs 2025 predictions in an interactive Streamlit dashboard.',
-    ],
-    track: 'Data Engineering · MLOps',
-    github: 'https://github.com/akashvignesh/citibike-demand-forecasting',
+    repos: [{ label: 'GitHub', url: 'https://github.com/akashvignesh/agentic-web-automation' }],
   },
   {
     id: 3,
-    title: 'NYC Yellow Taxi Demand Predictor',
-    description: 'A machine-learning system that predicts next-hour taxi ride demand across all NYC taxi zones, covering the full MLOps lifecycle.',
-    image: '/projects/taxi.svg',
-    tags: ['Python', 'LightGBM', 'Hopsworks', 'Streamlit', 'Pandas'],
-    period: '2025',
-    achievements: [
-      'Built a full MLOps pipeline from raw NYC TLC trip records through feature engineering, model training, and a live feature/model store on Hopsworks.',
-      'Trained a LightGBM regressor to predict the number of rides in the next hour for each pickup zone.',
-      'Served real-time predictions through a Streamlit dashboard for interactive exploration across all NYC zones.',
+    title: 'NYC Demand Forecasting · Bike + Taxi',
+    track: 'Data Engineering · MLOps',
+    category: 'data',
+    featured: false,
+    outcome: 'Two end-to-end MLOps pipelines with automated retraining',
+    description: 'Forecasts Citi Bike and Yellow Taxi demand across NYC: feature engineering, a Hopsworks feature/model store, time-series-validated LightGBM models, GitHub Actions schedules, and live Streamlit dashboards.',
+    tags: ['Python', 'LightGBM', 'Hopsworks', 'Streamlit', 'GitHub Actions', 'AWS S3'],
+    image: '/projects/bike.svg',
+    period: '2025–26',
+    repos: [
+      { label: 'Citi Bike', url: 'https://github.com/akashvignesh/citibike-demand-forecasting' },
+      { label: 'Yellow Taxi', url: 'https://github.com/akashvignesh/nyc-taxi-demand-prediction' },
     ],
-    track: 'Data Science · Analytics',
-    github: 'https://github.com/akashvignesh/nyc-taxi-demand-prediction',
   },
   {
     id: 4,
-    title: 'Agentic Browser Automation Agent',
-    description: 'An LLM agent that drives a real Chrome session to complete any web task from a natural-language prompt: perceiving the page, choosing one action at a time, and verifying each step.',
-    image: '/projects/agentic.svg',
-    tags: ['TypeScript', 'Node.js', 'LLM Agents', 'Chrome DevTools Protocol', 'AWS Bedrock'],
+    title: 'Serverless AWS File Pipeline',
+    track: 'Cloud · Data Engineering',
+    category: 'cloud',
+    featured: false,
+    outcome: 'Event-driven, on-demand compute, 100% infrastructure-as-code',
+    description: 'A file upload flows through API Gateway + Lambda to S3/DynamoDB; a DynamoDB stream spins up a fresh EC2 instance that processes the file and self-terminates. Provisioned end-to-end with AWS CDK.',
+    tags: ['Next.js', 'AWS Lambda', 'API Gateway', 'DynamoDB', 'EC2', 'AWS CDK'],
+    image: '/projects/serverless.svg',
     period: '2026',
-    achievements: [
-      'Built a provider-agnostic agentic loop (Bedrock / Ollama / NVIDIA) that snapshots each page into an indexed element list with set-of-marks screenshots, lets the model pick one CDP action (fill / click / select / scroll / upload), then verifies and repeats. The LLM never touches a CSS selector.',
-      'Demonstrated it on the hard real-world case of end-to-end job applications, adding a deterministic domain layer: a profile resolver, a safety policy that blocks sensitive fields (SSN, payment, CAPTCHA) and gates final submission, and Gmail IMAP OTP / magic-link verification.',
-      'Hardened the runtime with a loop-guard that halts repeated failing actions and a per-page-fingerprint cache that replays known pages without any LLM calls, plus JSONL tool-trace and screenshot logging.',
-    ],
-    track: 'AI Engineering',
-    github: 'https://github.com/akashvignesh/agentic-web-automation',
+    repos: [{ label: 'GitHub', url: 'https://github.com/akashvignesh/serverless-file-pipeline' }],
   },
   {
     id: 5,
-    title: 'Serverless AWS File-Processing Pipeline',
-    description: 'An event-driven AWS pipeline where a file upload spins up on-demand compute to process it and return the result, fully provisioned as infrastructure-as-code.',
-    image: '/projects/serverless.svg',
-    tags: ['Next.js', 'AWS Lambda', 'API Gateway', 'DynamoDB', 'EC2', 'AWS CDK'],
+    title: 'Diabetes Risk Prediction',
+    track: 'Machine Learning',
+    category: 'ml',
+    featured: false,
+    outcome: 'Benchmarked multiple classifiers to pick the best diabetes-risk model',
+    description: 'Predicts diabetes risk from patient health indicators — engineered features, compared several classification models, and selected the strongest performer, packaged with a Dockerized app.',
+    tags: ['Python', 'scikit-learn', 'Pandas', 'Jupyter', 'Docker'],
+    image: '/projects/diabetes.png',
+    period: '2025',
+    repos: [{ label: 'GitHub', url: 'https://github.com/akashvignesh/diseasePredictionSystem' }],
+  },
+  {
+    id: 6,
+    title: 'Document RAG Service',
+    track: 'AI Engineering · RAG',
+    category: 'ml',
+    featured: false,
+    outcome: 'Grounded Q&A over a PDF via hybrid semantic + vector retrieval',
+    description: 'A Retrieval-Augmented Generation service that answers natural-language questions about a document: parses the PDF, embeds it into ChromaDB, runs hybrid semantic + vector search, and grounds Google Gemini responses — served behind FastAPI and Dockerized.',
+    tags: ['Python', 'LangChain', 'ChromaDB', 'FastAPI', 'Gemini', 'Docker'],
+    image: '/projects/rag.svg',
     period: '2026',
-    achievements: [
-      'Designed an event-driven flow: a React/Next.js form submits a file through API Gateway and Lambda, persisting metadata to DynamoDB and the file to S3 via presigned URLs.',
-      'Used a DynamoDB stream to trigger a Lambda that launches a fresh EC2 instance, which downloads the input, runs the processing script, uploads the output to S3, and self-terminates.',
-      'Provisioned the entire stack as infrastructure-as-code with AWS CDK v2 (TypeScript) and the AWS SDK v3.',
-    ],
-    track: 'Data Engineering · Cloud',
-    github: 'https://github.com/akashvignesh/serverless-file-pipeline',
+    repos: [{ label: 'GitHub', url: 'https://github.com/akashvignesh/document-rag-service' }],
   },
 ];
 
+const categories = [
+  { id: 'all', label: 'All' },
+  { id: 'ml', label: 'AI / ML' },
+  { id: 'data', label: 'Data & MLOps' },
+  { id: 'cloud', label: 'Cloud' },
+];
+
+const imgFallback =
+  "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='600'%20height='300'%3E%3Crect%20width='600'%20height='300'%20fill='%230f172a'/%3E%3C/svg%3E";
+
 export default function Projects() {
   const { theme } = useTheme();
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
-  const [expandedId, setExpandedId] = useState<number | null>(null);
   const themeClass = theme === 'dark' ? 'dark' : 'light';
+  const [activeCategory, setActiveCategory] = useState('all');
 
-  const toggleExpand = (projectId: number) => {
-    setExpandedId(expandedId === projectId ? null : projectId);
-  };
+  const visible = activeCategory === 'all'
+    ? projects
+    : projects.filter((p) => p.category === activeCategory);
+  const featured = visible.filter((p) => p.featured);
+  const compact = visible.filter((p) => !p.featured);
+
+  const renderRepos = (p: Project) => (
+    <div className="pj-links">
+      {p.demo && (
+        <a href={p.demo} target="_blank" rel="noopener noreferrer" className={`pj-link pj-link--demo pj-link--demo-${themeClass}`}>
+          <svg className="pj-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+          Live Demo
+        </a>
+      )}
+      {p.repos.map((r) => (
+        <a key={r.url} href={r.url} target="_blank" rel="noopener noreferrer" className={`pj-link pj-link--gh pj-link--gh-${themeClass}`}>
+          <i className="devicon devicon-github-original pj-link-gh-icon" aria-hidden="true" />
+          {r.label}
+        </a>
+      ))}
+    </div>
+  );
 
   return (
     <SectionCard
@@ -114,121 +163,83 @@ export default function Projects() {
         </svg>
       }
     >
-      <div className="projects-grid">
-        {initialProjects.map((project, index) => (
-          <div
-            key={project.id}
-            className={`projects-card projects-card--${themeClass} ${hoveredId === project.id ? 'projects-card--hovered' : ''}`}
-            style={{ animationDelay: `${index * 0.15}s` }}
-            onMouseEnter={() => setHoveredId(project.id)}
-            onMouseLeave={() => setHoveredId(null)}
+      {/* Track filter */}
+      <div className="pj-filter">
+        {categories.map((cat) => (
+          <button
+            key={cat.id}
+            onClick={() => setActiveCategory(cat.id)}
+            className={`pj-filter-btn pj-filter-btn--${themeClass} ${activeCategory === cat.id ? 'pj-filter-btn--active' : ''}`}
           >
-            {/* Image Container */}
-            <div className="projects-image-container">
-              <img
-                src={asset(project.image)}
-                alt={project.title}
-                className="projects-image"
-                onError={(e) => {
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.src =
-                    "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='600'%20height='300'%3E%3Crect%20width='600'%20height='300'%20fill='%230f172a'/%3E%3C/svg%3E";
-                }}
-              />
-              
-              {/* Overlay Gradient */}
-              <div className={`projects-image-overlay projects-image-overlay--${themeClass}`} />
-
-              {/* Period Badge */}
-              <div className={`projects-period projects-period--${themeClass}`}>
-                {project.period}
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="projects-content">
-              <div
-                style={{
-                  fontFamily: 'var(--font-geist-mono), ui-monospace, monospace',
-                  fontSize: '0.7rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.04em',
-                  textTransform: 'uppercase',
-                  color: 'var(--primary)',
-                  marginBottom: '0.4rem',
-                }}
-              >
-                {project.track}
-              </div>
-              <h3 className={`projects-title projects-title--${themeClass}`}>
-                {project.title}
-              </h3>
-
-              <p className={`projects-description projects-description--${themeClass}`}>
-                {project.description}
-              </p>
-
-              {/* More Details Dropdown */}
-              <div className="projects-details">
-                <button
-                  onClick={() => toggleExpand(project.id)}
-                  className={`projects-toggle projects-toggle--${themeClass}`}
-                >
-                  <svg className={`projects-toggle-icon ${expandedId === project.id ? 'projects-toggle-icon--rotated' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                  {expandedId === project.id ? 'Show Less' : 'More Details'}
-                </button>
-
-                {/* Expandable Content */}
-                <div className={`projects-expandable ${expandedId === project.id ? 'projects-expandable--open' : ''}`}>
-                  <div className={`projects-achievements projects-achievements--${themeClass}`}>
-                    {project.achievements.map((achievement, idx) => (
-                      <div key={idx} className={`projects-achievement projects-achievement--${themeClass}`}>
-                        <span className={`projects-achievement-dot projects-achievement-dot--${themeClass}`} />
-                        {achievement}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Tags */}
-              <div className="projects-tags">
-                {project.tags.map((tag) => (
-                  <span key={tag} className={`projects-tag projects-tag--${themeClass}`}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Links */}
-              <div className="projects-links">
-                {project.link && (
-                  <a href={project.link} className={`projects-link projects-link--${themeClass}`}>
-                    <svg className="projects-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                    Live Demo
-                  </a>
-                )}
-                {project.github && (
-                  <a href={project.github} className={`projects-github projects-github--${themeClass}`}>
-                    <i className="devicon devicon-github-original projects-github-icon" aria-hidden="true" />
-                    GitHub
-                  </a>
-                )}
-              </div>
-            </div>
-
-            {/* Border Glow Effect */}
-            <div className={`projects-glow projects-glow--${themeClass} ${hoveredId === project.id ? 'projects-glow--visible' : ''}`} />
-
-            {/* Decorative gradient bar */}
-            <div className={`projects-gradient-bar projects-gradient-bar--${themeClass}`} />
-          </div>
+            {cat.label}
+          </button>
         ))}
       </div>
+
+      {/* Featured */}
+      {featured.length > 0 && (
+        <div className="pj-featured-grid">
+          {featured.map((p) => (
+            <article key={p.id} className={`pj-featured pj-featured--${themeClass}`}>
+              <div className="pj-featured-media">
+                <img
+                  src={asset(p.image)}
+                  alt={p.title}
+                  className="pj-featured-img"
+                  onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = imgFallback; }}
+                />
+                <span className={`pj-track pj-track--${themeClass}`}>{p.track}</span>
+              </div>
+              <div className="pj-featured-body">
+                <h3 className={`pj-title pj-title--${themeClass}`}>{p.title}</h3>
+                <p className={`pj-outcome pj-outcome--${themeClass}`}>{p.outcome}</p>
+                <p className={`pj-desc pj-desc--${themeClass}`}>{p.description}</p>
+                {p.hard && (
+                  <p className={`pj-hard pj-hard--${themeClass}`}>
+                    <span className="pj-hard-label">Hard part —</span> {p.hard}
+                  </p>
+                )}
+                <div className="pj-tags">
+                  {p.tags.map((t) => (
+                    <span key={t} className={`pj-tag pj-tag--${themeClass}`}>{t}</span>
+                  ))}
+                </div>
+                {renderRepos(p)}
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
+
+      {/* Compact */}
+      {compact.length > 0 && (
+        <div className="pj-compact-grid">
+          {compact.map((p) => (
+            <article key={p.id} className={`pj-compact pj-compact--${themeClass}`}>
+              <div className="pj-compact-media">
+                <img
+                  src={asset(p.image)}
+                  alt={p.title}
+                  className="pj-compact-img"
+                  onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = imgFallback; }}
+                />
+                <span className={`pj-track pj-track--${themeClass}`}>{p.track}</span>
+              </div>
+              <div className="pj-compact-body">
+                <h3 className={`pj-title pj-title--sm pj-title--${themeClass}`}>{p.title}</h3>
+                <p className={`pj-outcome pj-outcome--sm pj-outcome--${themeClass}`}>{p.outcome}</p>
+                <p className={`pj-desc pj-desc--sm pj-desc--${themeClass}`}>{p.description}</p>
+                <div className="pj-tags">
+                  {p.tags.map((t) => (
+                    <span key={t} className={`pj-tag pj-tag--${themeClass}`}>{t}</span>
+                  ))}
+                </div>
+                {renderRepos(p)}
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
     </SectionCard>
   );
 }

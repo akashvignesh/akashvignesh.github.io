@@ -159,19 +159,13 @@ export default function Contact() {
           <div className="contact-methods">
             {[
               { icon: 'email', label: 'Email', value: LINKS.email, href: `mailto:${LINKS.email}` },
-              { icon: 'phone', label: 'Phone', value: '+1 (716) 709-0514', href: 'tel:+17167090514' },
-              { icon: 'location', label: 'Location', value: 'New York, USA', href: '#' },
+              { icon: 'location', label: 'Location', value: 'New York, USA · Open to relocate', href: '#' },
             ].map((item) => (
               <a key={item.label} href={item.href} className={`contact-method contact-method--${themeClass}`}>
                 <div className={`contact-method-icon contact-method-icon--${themeClass}`}>
                   {item.icon === 'email' && (
                     <svg className="contact-method-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  )}
-                  {item.icon === 'phone' && (
-                    <svg className="contact-method-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                   )}
                   {item.icon === 'location' && (

@@ -5,21 +5,19 @@ import { asset } from '@/src/config/site';
 
 const education = [
   {
-    degree: 'Master of Engineering Science in Data Science',
-    institution: 'University at Buffalo, The State University of New York',
-    location: 'Buffalo, New York',
-    period: 'August 2024 – December 2025',
-    description: 'Probability Theory, Numerical Mathematics, Programming Fundamentals, Database Query Languages, Machine Learning, Statistical Learning, Data Mining, Industry Applications',
-    icon: '🎓',
+    degree: 'Master of Science in Engineering Science (Data Science)',
+    institution: 'University at Buffalo, SUNY',
+    location: 'Buffalo, NY',
+    period: 'Aug 2024 – Dec 2025',
+    coursework: 'Machine Learning, Statistical Learning, Data Mining, Probability Theory, Numerical Mathematics, Database Query Languages',
     image: '/education/buffalo.jpg',
   },
   {
-    degree: 'Bachelor of Engineering in Computer Science Engineering',
+    degree: 'Bachelor of Engineering in Computer Science',
     institution: 'Sri Sairam Engineering College',
     location: 'Chennai, India',
-    period: 'August 2018 - June 2022',
-    description: 'Data Structures, Algorithms, Database Management, Object-Oriented Programming, Software Engineering, Machine Learning, Operating Systems',
-    icon: '📚',
+    period: 'Aug 2018 – Jun 2022',
+    coursework: 'Data Structures & Algorithms, DBMS, Operating Systems, OOP, Software Engineering, Machine Learning',
     image: '/education/sairam.jpg',
   },
 ];
@@ -39,67 +37,34 @@ export default function Education() {
         </svg>
       }
     >
-      <div className="education-list">
-        {education.map((edu, index) => (
-          <div key={index} className={`education-card education-card--${themeClass}`}>
-            <div className="education-card-inner">
-              {/* Left - Logo/Image Section */}
-              <div className={`education-logo-section education-logo-section--${themeClass}`}>
-                <div className={`education-logo-wrapper education-logo-wrapper--${themeClass}`}>
-                  <img
-                    src={asset(edu.image)}
-                    alt={edu.institution}
-                    className="education-logo"
-                    onError={(e) => {
-                      e.currentTarget.onerror = null;
-                      e.currentTarget.src =
-                        "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='150'%20height='150'%3E%3Crect%20width='150'%20height='150'%20fill='%231e3a5f'/%3E%3C/svg%3E";
-                    }}
-                  />
-                </div>
-              </div>
-
-              {/* Right - Content Section */}
-              <div className="education-content">
-                {/* Period Badge */}
-                <div className="education-header">
-                  <span className={`education-period education-period--${themeClass}`}>
-                    {edu.period}
-                  </span>
-                </div>
-
-                {/* Degree */}
-                <h3 className={`education-degree education-degree--${themeClass}`}>
-                  {edu.degree}
-                </h3>
-
-                {/* Institution */}
-                <p className={`education-institution education-institution--${themeClass}`}>
-                  {edu.institution}
-                </p>
-
-                {/* Location */}
-                <p className={`education-location education-location--${themeClass}`}>
-                  <svg className="education-location-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  {edu.location}
-                </p>
-
-                {/* Coursework as Tags */}
-                <div className="education-courses">
-                  {edu.description.split(', ').map((course, idx) => (
-                    <span key={idx} className={`education-course-tag education-course-tag--${themeClass}`}>
-                      {course}
-                    </span>
-                  ))}
-                </div>
-              </div>
+      <div className="edu-list">
+        {education.map((edu, i) => (
+          <div key={i} className={`edu-item edu-item--${themeClass}`}>
+            <div className={`edu-logo edu-logo--${themeClass}`}>
+              <img
+                src={asset(edu.image)}
+                alt={edu.institution}
+                className="edu-logo-img"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src =
+                    "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='100'%20height='100'%3E%3Crect%20width='100'%20height='100'%20fill='%231e3a5f'/%3E%3C/svg%3E";
+                }}
+              />
             </div>
-
-            {/* Bottom accent line */}
-            <div className={`education-accent education-accent--${themeClass}`} />
+            <div className="edu-main">
+              <div className="edu-row1">
+                <h3 className={`edu-degree edu-degree--${themeClass}`}>{edu.degree}</h3>
+                <span className={`edu-period edu-period--${themeClass}`}>{edu.period}</span>
+              </div>
+              <p className={`edu-school edu-school--${themeClass}`}>
+                {edu.institution} · {edu.location}
+              </p>
+              <p className={`edu-courses edu-courses--${themeClass}`}>
+                <span className="edu-courses-label">Relevant coursework: </span>
+                {edu.coursework}
+              </p>
+            </div>
           </div>
         ))}
       </div>
