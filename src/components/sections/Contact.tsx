@@ -31,7 +31,10 @@ export default function Contact() {
     // confirm once; after that every message is delivered automatically.
     try {
       setStatus('sending');
-      const res = await fetch(`https://formsubmit.co/ajax/${LINKS.email}`, {
+      // FormSubmit hashed endpoint (delivers to akashsureshkumar.dev@gmail.com).
+      // Using the hash instead of the raw email keeps the address out of the
+      // page source so bots can't scrape it.
+      const res = await fetch('https://formsubmit.co/ajax/f37b8ec95c29931d46a4eb503edc0165', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
