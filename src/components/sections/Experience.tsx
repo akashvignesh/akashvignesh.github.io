@@ -39,9 +39,9 @@ const timeline: Company[] = [
         title: 'Software Engineer',
         period: 'Feb 2026 – Present',
         highlights: [
-          { metric: 'Led 6 engineers', text: 'Lead a team of 6 engineers, driving the design and development of the platform end to end and owning architecture decisions through delivery.' },
-          { metric: '200+ users', text: 'Built a full-stack Faculty Portal across 6 departments: 7+ Java Spring Boot REST APIs, JWT/OAuth2 auth, normalized PostgreSQL schemas, and reusable React/Next.js workflows.' },
-          { metric: '−40% query time', text: 'Cut average query response time 40% and database read load 35% with index-aware SQL and optimized Hibernate/JPA queries across 8+ workflows.' },
+          { metric: 'Led 6 engineers', text: 'Lead a team of 6 engineers across the full lifecycle, owning architecture decisions, code review, and delivery end to end.' },
+          { metric: '6 departments', text: 'Built and shipped a full-stack faculty research portal that brought 6 departments onto one system (200+ users): 7+ Java Spring Boot REST APIs, JWT/OAuth2 auth, normalized PostgreSQL schemas, and reusable React/Next.js workflows.' },
+          { metric: '−40% report time', text: 'Designed index-aware PostgreSQL schemas and tuned Hibernate/JPA queries with covering indexes, cutting the slowest cross-department reporting queries about 40% across 8+ workflows.' },
           { metric: '30m → <5m deploys', text: 'Containerized services with Docker and built GitHub Actions CI/CD with automated test gates on Linux.' },
         ],
       },
