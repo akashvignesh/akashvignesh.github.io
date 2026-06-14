@@ -76,8 +76,7 @@ export default function HomePage() {
 
             {/* Description */}
             <p className={`hero-description hero-description--${themeClass}`}>
-              3+ years shipping production backends: REST APIs and event-driven microservices in <span className={`highlight highlight--primary-${themeClass}`}>Java &amp; Spring Boot</span>, built to stay fast under load.
-              I also work in Python &amp; TypeScript, and build <span className={`highlight highlight--secondary-${themeClass}`}>ML/AI services &amp; data pipelines</span> on AWS. Currently finishing an MS at the University at Buffalo.
+              I build <span className={`highlight highlight--primary-${themeClass}`}>production backends</span> that stay fast under load, and ship <span className={`highlight highlight--secondary-${themeClass}`}>ML &amp; AI</span> models into real services. Core stack: Java, Spring Boot, Python, AWS.
             </p>
 
             {/* CTA Buttons */}

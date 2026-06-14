@@ -59,20 +59,19 @@ export default function About() {
       <div className="about-content">
         {/* Tagline */}
         <p className={`about-tagline about-tagline--${themeClass}`}>
-          From scalable backends to ML in production.
+          Systems that stay fast, correct, and simple to ship.
         </p>
 
         {/* Bio */}
         <div className="about-bio">
           <p className={`about-bio-text about-bio-text--${themeClass}`}>
-            I&apos;m a <span className={`about-highlight about-highlight--${themeClass}`}>Software Engineer</span> with 3+ years shipping production backends:
-            REST APIs, event-driven microservices, and distributed services in <span className={`about-highlight about-highlight--${themeClass}`}>Java / Spring Boot</span>.
-            At Guardian Life I cut API p95 latency 455&nbsp;→&nbsp;120&nbsp;ms, halved MTTR (5d&nbsp;→&nbsp;2d), and mentored 7 engineers.
+            At <span className={`about-highlight about-highlight--${themeClass}`}>Guardian Life</span> I helped run a distributed insurance-eligibility platform serving 10M+ members,
+            cutting API p95 latency 455&nbsp;→&nbsp;120&nbsp;ms, tripling throughput, and halving MTTR (5d&nbsp;→&nbsp;2d) while mentoring 7 engineers.
+            The work I care about is the unglamorous kind: execution plans, caching, circuit breakers, and the tests that keep an eligibility check correct under real load.
           </p>
           <p className={`about-bio-text about-bio-text--${themeClass}`}>
-            I&apos;m finishing an <span className={`about-highlight about-highlight--secondary about-highlight--secondary-${themeClass}`}>MS in Engineering Science</span> at the University at Buffalo.
-            Beyond backend I ship <span className={`about-highlight about-highlight--secondary about-highlight--secondary-${themeClass}`}>ML &amp; AI systems</span>: multimodal models,
-            LLM agents, and end-to-end data pipelines on AWS, turning models into production services.
+            Now I&apos;m finishing an <span className={`about-highlight about-highlight--secondary about-highlight--secondary-${themeClass}`}>MS in Engineering Science</span> at the University at Buffalo and pushing further into <span className={`about-highlight about-highlight--secondary about-highlight--secondary-${themeClass}`}>ML &amp; AI</span>:
+            multimodal models, LLM agents, and end-to-end data pipelines on AWS. What I enjoy most is the full path from a trained model to a service people actually call.
           </p>
         </div>
 
