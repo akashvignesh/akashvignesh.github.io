@@ -18,26 +18,34 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
-    // No form service configured: fall back to the visitor's mail client.
-    if (!accessKey) {
-      const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`;
-      window.location.href = `mailto:${LINKS.email}?subject=${encodeURIComponent(
-        formData.subject || 'Portfolio contact'
-      )}&body=${encodeURIComponent(body)}`;
+    // Honeypot: hidden from humans; bots tick it. Drop those submissions.
+    const form = e.currentTarget as HTMLFormElement;
+    if ((form.elements.namedItem('botcheck') as HTMLInputElement | null)?.checked) {
+      setStatus('sent');
       return;
     }
 
+    // FormSubmit: free, no API key. Each submission is emailed straight to my
+    // inbox. The very first submission triggers a one-time activation email I
+    // confirm once; after that every message is delivered automatically.
     try {
       setStatus('sending');
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch(`https://formsubmit.co/ajax/${LINKS.email}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ access_key: accessKey, ...formData }),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          _subject: `Portfolio contact: ${formData.subject || 'New message'}`,
+          _template: 'table',
+          _captcha: 'false',
+        }),
       });
       const data = await res.json();
-      if (data.success) {
+      if (data.success === 'true' || data.success === true) {
         setStatus('sent');
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
@@ -53,6 +61,8 @@ export default function Contact() {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    // Clear a previous error/success once the visitor edits again.
+    if (status === 'error' || status === 'sent') setStatus('idle');
   };
 
   return (
@@ -68,6 +78,15 @@ export default function Contact() {
         {/* Contact Form */}
         <div className="contact-form-wrapper">
           <form onSubmit={handleSubmit} className="contact-form">
+            {/* Honeypot: hidden from humans, bots fill it and get dropped. */}
+            <input
+              type="checkbox"
+              name="botcheck"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              style={{ display: 'none' }}
+            />
             <div className="contact-field">
               <label htmlFor="name" className={`contact-label contact-label--${themeClass}`}>Name</label>
               <input
@@ -158,33 +177,46 @@ export default function Contact() {
 
           <div className="contact-methods">
             {[
-              { icon: 'email', label: 'Email', value: LINKS.email, href: `mailto:${LINKS.email}` },
-              { icon: 'location', label: 'Location', value: 'New York, USA · Open to relocate', href: '#' },
-            ].map((item) => (
-              <a key={item.label} href={item.href} className={`contact-method contact-method--${themeClass}`}>
-                <div className={`contact-method-icon contact-method-icon--${themeClass}`}>
-                  {item.icon === 'email' && (
-                    <svg className="contact-method-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  )}
-                  {item.icon === 'location' && (
-                    <svg className="contact-method-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  )}
+              { icon: 'email', label: 'Email', value: LINKS.email, href: `mailto:${LINKS.email}` as string | undefined },
+              { icon: 'location', label: 'Location', value: 'New York, USA · Open to relocate', href: undefined as string | undefined },
+            ].map((item) => {
+              const inner = (
+                <>
+                  <div className={`contact-method-icon contact-method-icon--${themeClass}`}>
+                    {item.icon === 'email' && (
+                      <svg className="contact-method-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    )}
+                    {item.icon === 'location' && (
+                      <svg className="contact-method-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    )}
+                  </div>
+                  <div className="contact-method-content">
+                    <p className={`contact-method-label contact-method-label--${themeClass}`}>
+                      {item.label}
+                    </p>
+                    <p className={`contact-method-value contact-method-value--${themeClass}`}>
+                      {item.value}
+                    </p>
+                  </div>
+                </>
+              );
+              // Email is actionable (mailto); Location is informational, so it
+              // renders as a plain div instead of an anchor that jumps to top.
+              return item.href ? (
+                <a key={item.label} href={item.href} className={`contact-method contact-method--${themeClass}`}>
+                  {inner}
+                </a>
+              ) : (
+                <div key={item.label} className={`contact-method contact-method--${themeClass}`}>
+                  {inner}
                 </div>
-                <div className="contact-method-content">
-                  <p className={`contact-method-label contact-method-label--${themeClass}`}>
-                    {item.label}
-                  </p>
-                  <p className={`contact-method-value contact-method-value--${themeClass}`}>
-                    {item.value}
-                  </p>
-                </div>
-              </a>
-            ))}
+              );
+            })}
           </div>
 
           {/* Social Links */}
