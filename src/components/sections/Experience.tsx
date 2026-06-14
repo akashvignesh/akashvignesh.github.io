@@ -53,7 +53,7 @@ const timeline: Company[] = [
     image: '/experience/guardian.jpg',
     range: 'Apr 2022 – Aug 2024',
     progression: 'Intern → Software Engineer I → Software Engineer II',
-    stack: ['Java', 'Spring Boot', 'AWS', 'Oracle', 'Redis', 'Docker', 'Angular'],
+    stack: ['Java', 'Spring Boot', 'AWS', 'MySQL', 'Redis', 'Docker', 'Angular'],
     roles: [
       {
         title: 'Software Engineer II',
@@ -68,7 +68,7 @@ const timeline: Company[] = [
         title: 'Software Engineer I',
         period: 'Oct 2022 – Mar 2024',
         highlights: [
-          { metric: '455 → 120 ms p95', text: 'Cut API p95 latency from 455 ms to 120 ms and tripled throughput by rewriting Oracle/SQL execution plans, adding covering indexes, and introducing Redis caching with TTL-based invalidation across 12+ eligibility endpoints.' },
+          { metric: '455 → 120 ms p95', text: 'Cut API p95 latency from 455 ms to 120 ms and tripled throughput by rewriting MySQL execution plans, adding covering indexes, and introducing Redis caching with TTL-based invalidation across 12+ eligibility endpoints.' },
           { metric: 'Stopped improper payouts', text: 'Prevented improper claim payments on terminated/ineligible members by hardening real-time eligibility checks and speeding 834 benefit-enrollment file processing across the 10M+ member platform, reducing financial leakage.' },
           { metric: '−40% incidents', text: 'Cut critical incidents 40% and improved reliability 35% with circuit-breaker patterns and automated Postman regression suites across 20+ REST API contracts.' },
           { metric: '20+ features', text: 'Shipped 20+ production Java Spring Boot features for high-volume insurance eligibility and transaction-processing workflows.' },
@@ -78,7 +78,7 @@ const timeline: Company[] = [
         title: 'Software Engineer Intern',
         period: 'Apr 2022 – Sep 2022',
         highlights: [
-          { metric: '$2M+/mo', text: 'Delivered end-to-end 5+ production eligibility features on a Java Spring Boot + Oracle platform serving 10M+ member records and $2M+/mo in policy transactions.' },
+          { metric: '$2M+/mo', text: 'Delivered end-to-end 5+ production eligibility features on a Java Spring Boot + MySQL platform serving 10M+ member records and $2M+/mo in policy transactions.' },
           { metric: 'P0 caught', text: 'Caught and resolved same-day a coverage defect missed by 3 prior reviews by authoring JUnit/Mockito contract tests across 15+ edge cases, protecting 12K+ policyholders.' },
           { metric: 'Onboarding 2d → 4h', text: 'Cut new-engineer onboarding from 2 days to 4 hours with reusable Angular workflows and setup/deployment runbooks.' },
         ],

@@ -70,8 +70,8 @@ export default function About() {
             The work I care about is the unglamorous kind: execution plans, caching, circuit breakers, and the tests that keep an eligibility check correct under real load.
           </p>
           <p className={`about-bio-text about-bio-text--${themeClass}`}>
-            Now I&apos;m finishing an <span className={`about-highlight about-highlight--secondary about-highlight--secondary-${themeClass}`}>MS in Engineering Science</span> at the University at Buffalo and pushing further into <span className={`about-highlight about-highlight--secondary about-highlight--secondary-${themeClass}`}>ML &amp; AI</span>:
-            multimodal models, LLM agents, and end-to-end data pipelines on AWS. What I enjoy most is the full path from a trained model to a service people actually call.
+            I recently completed my MS in Engineering Science (Data Science) at the University at Buffalo, where I now <span className={`about-highlight about-highlight--secondary about-highlight--secondary-${themeClass}`}>lead a small team</span> as a software engineer, building an internal research platform. Alongside it I&apos;m pushing deeper into <span className={`about-highlight about-highlight--secondary about-highlight--secondary-${themeClass}`}>ML &amp; AI</span>:
+            multimodal models, LLM agents, and end-to-end pipelines on AWS. What I enjoy most is the full path from a trained model to a service people actually call.
           </p>
         </div>
 
