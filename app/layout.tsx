@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://akashvignesh.github.io/my-portfolio"),
+  metadataBase: new URL("https://akashvignesh.github.io"),
   title: {
     default: "Akash Sureshkumar · Software & ML/AI Engineer",
     template: "%s · Akash Sureshkumar",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "Akash Sureshkumar · Software & ML/AI Engineer",
     description:
       "Software & ML/AI Engineer with 3+ years building scalable backends, ML/AI services, and data pipelines.",
-    url: "https://akashvignesh.github.io/my-portfolio",
+    url: "https://akashvignesh.github.io",
   },
   twitter: {
     card: "summary_large_image",

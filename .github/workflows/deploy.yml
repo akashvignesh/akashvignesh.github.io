@@ -20,9 +20,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      # Project site is served from /<repo>. Change if you move to a user
-      # site (<user>.github.io) or a custom domain — then set this to "".
-      NEXT_PUBLIC_BASE_PATH: /my-portfolio
+      # User site (akashvignesh.github.io) serves at the root, so no basePath.
+      # For a project site, set this to "/<repo>".
+      NEXT_PUBLIC_BASE_PATH: ""
       # Optional: add a repo variable WEB3FORMS_KEY (Settings → Secrets and
       # variables → Actions → Variables) to make the contact form send email.
       # If unset, the form falls back to opening the visitor's mail client.
