@@ -17,7 +17,7 @@ const ROLES = [
 const heroStats = [
   { value: '455→120ms', label: 'API p95 latency' },
   { value: '3×', label: 'throughput gain' },
-  { value: '0.88', label: 'ML model AUC' },
+  { value: '10M+', label: 'members served' },
   { value: '$2M+/mo', label: 'transactions served' },
 ];
 
@@ -103,7 +103,7 @@ export default function HomePage() {
           {/* Right: Currently + career-wide impact panel */}
           <aside className={`hero-panel hero-panel--${themeClass}`}>
             <div className="hero-panel-label">Currently</div>
-            <div className="hero-panel-role">Software Engineer, Research</div>
+            <div className="hero-panel-role">Software Engineer</div>
             <div className="hero-panel-org">University at Buffalo · Feb 2026</div>
             <div className="hero-panel-divider" />
             <div className="hero-panel-label">Selected impact · across 3+ years</div>
