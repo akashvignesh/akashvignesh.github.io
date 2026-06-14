@@ -77,16 +77,32 @@ export default function TopNav({ visible = true }: TopNavProps) {
     <nav className={`top-nav top-nav--${themeClass} ${scrolled ? 'top-nav--scrolled' : ''} ${visible ? 'top-nav--visible' : 'top-nav--hidden'}`}>
       <div className="top-nav-container">
         {/* Logo */}
-        <button 
+        <button
           onClick={() => scrollToSection('home')}
           className="nav-logo-btn"
+          aria-label="Akash Sureshkumar, back to top"
         >
-          <div className={`nav-logo nav-logo--${themeClass}`}>
-            <span className="nav-logo-text">
-              Akash
-              <span className={`nav-logo-underline nav-logo-underline--${themeClass}`} />
-            </span>
-          </div>
+          <span className={`nav-monogram nav-monogram--${themeClass}`} aria-hidden="true">
+            <svg className="nav-monogram-glyph" viewBox="0 0 48 48">
+              {/* subtle glass edge */}
+              <rect x="1" y="1" width="46" height="46" rx="13" fill="none" stroke="rgba(255,255,255,0.22)" strokeWidth="1" />
+              <text
+                x="24"
+                y="25"
+                textAnchor="middle"
+                dominantBaseline="central"
+                fontFamily="inherit"
+                fontSize="21"
+                fontWeight="800"
+                letterSpacing="-1.6"
+                fill="#fff"
+              >
+                AS
+              </text>
+            </svg>
+            {/* animated light sweep */}
+            <span className="nav-monogram-shine" />
+          </span>
         </button>
 
         {/* Desktop Navigation */}
