@@ -13,12 +13,12 @@ const ROLES = [
   'AI Engineer',
 ];
 
-// Proof metrics spanning backend performance, ML, and scale.
+// Proof metrics spanning backend performance, reliability, ML, and scale.
 const heroStats = [
-  { value: '455→120ms', label: 'API p95 latency' },
-  { value: '3×', label: 'throughput gain' },
-  { value: '10M+', label: 'members served' },
-  { value: '$2M+/mo', label: 'transactions served' },
+  { value: '29M+', label: 'members served' },
+  { value: '600→210ms', label: 'API latency cut' },
+  { value: '~90%', label: 'fewer incidents' },
+  { value: '96%', label: 'ML model accuracy' },
 ];
 
 export default function HomePage() {
@@ -106,7 +106,7 @@ export default function HomePage() {
             <div className="hero-panel-role">Software Engineer</div>
             <div className="hero-panel-org">University at Buffalo · Feb 2026</div>
             <div className="hero-panel-divider" />
-            <div className="hero-panel-label">Selected impact · across 3+ years</div>
+            <div className="hero-panel-label">Selected impact · backend, scale &amp; ML</div>
             <div className="hero-panel-stats">
               {heroStats.map((stat, i) => (
                 <div

@@ -24,63 +24,46 @@ interface Company {
   roles: Role[];
 }
 
-// Grouped by company so the Guardian progression reads as one tenure
-// (Intern → SWE I → SWE II) instead of three repeated logos. Each bullet
-// leads with the metric; the prose is the proof.
+// Content is kept in sync with the verified resume: real, defensible numbers only.
 const timeline: Company[] = [
   {
-    company: 'University at Buffalo',
+    company: 'University at Buffalo, AI Innovation Lab',
     location: 'Buffalo, NY',
     image: '/education/buffalo.jpg',
     range: 'Feb 2026 – Present',
-    stack: ['Java', 'Spring Boot', 'Next.js', 'PostgreSQL', 'Docker', 'GitHub Actions'],
+    stack: ['Next.js', 'TypeScript', 'Node.js', 'Python', 'RAG', 'LLM', 'GitHub Actions', 'Docker', 'Kubernetes', 'MySQL'],
     roles: [
       {
         title: 'Software Engineer',
         period: 'Feb 2026 – Present',
         highlights: [
-          { metric: 'Led 6 engineers', text: 'Lead a team of 6 engineers across the full lifecycle, owning architecture decisions, code review, and delivery end to end.' },
-          { metric: '6 departments', text: 'Built and shipped a full-stack faculty research portal that brought 6 departments onto one system (200+ users): 7+ Java Spring Boot REST APIs, JWT/OAuth2 auth, normalized PostgreSQL schemas, and reusable React/Next.js workflows.' },
-          { metric: '−40% report time', text: 'Designed index-aware PostgreSQL schemas and tuned Hibernate/JPA queries with covering indexes, cutting the slowest cross-department reporting queries about 40% across 8+ workflows.' },
-          { metric: '30m → <5m deploys', text: 'Containerized services with Docker and built GitHub Actions CI/CD with automated test gates on Linux.' },
+          { metric: '143 faculty · 1,342 students', text: 'Delivered a single source of truth for faculty data now used by 143 faculty and 1,342 students, cutting redundant manual spreadsheet work ~70%, by building a full-stack CSE Faculty Portal end to end with AI coding assistants (Claude Code, Codex).' },
+          { metric: '−50% advising queries', text: 'Enabled students to self-serve faculty information in natural language and cut routine advising queries over 50%, by building and deploying a RAG chatbot with an LLM retrieval pipeline over structured faculty data.' },
+          { metric: '5-min zero-touch deploys', text: 'Enabled zero-touch releases that build and deploy in ~5 minutes while leading a 6-engineer team, by scripting GitHub Actions CI/CD that ships Dockerized containers to Kubernetes on a self-hosted Linux server.' },
+          { metric: '6 tools → 1', text: 'Replaced fragmented access across 6 separate tools with unified role-based access control across 4 role views, enforcing least privilege over profiles, courses, committees, awards, and advisee records.' },
         ],
       },
     ],
   },
   {
     company: 'Guardian Life',
-    location: 'Chennai, India',
+    location: 'Remote',
     image: '/experience/guardian.jpg',
     range: 'Apr 2022 – Aug 2024',
-    progression: 'Intern → Software Engineer I → Software Engineer II',
-    stack: ['Java', 'Spring Boot', 'AWS', 'MySQL', 'Redis', 'Docker', 'Angular'],
+    progression: 'Software Engineer I → Software Engineer II',
+    stack: ['Java', 'Spring Boot', 'Microservices', 'REST APIs', 'Redis', 'Angular', 'TypeScript', 'AWS', 'Splunk', 'CloudWatch', 'JUnit'],
     roles: [
       {
         title: 'Software Engineer II',
-        period: 'Apr 2024 – Aug 2024',
+        period: 'Apr 2022 – Aug 2024',
         highlights: [
-          { metric: 'MTTR 5d → 2d', text: 'Drove incident response on a distributed eligibility platform serving 10M+ member records at 99.9% SLA and 500+ concurrent sessions, safeguarding $2M+/mo in policy transactions with real-time Splunk dashboards and AWS CloudWatch alarms.' },
-          { metric: '3× faster ships', text: 'Cut release cycle from 1 hour to 15 minutes by helping decompose a monolith into event-driven microservices with isolated CI/CD pipelines.' },
-          { metric: 'Mentored 7', text: 'Raised code quality across my team’s services by enforcing SonarQube quality gates, reviewing PRs, and mentoring 7 engineers, lifting PR throughput 20% and cutting cyclomatic complexity 75%.' },
-        ],
-      },
-      {
-        title: 'Software Engineer I',
-        period: 'Oct 2022 – Mar 2024',
-        highlights: [
-          { metric: '455 → 120 ms p95', text: 'Cut API p95 latency from 455 ms to 120 ms and tripled throughput by rewriting MySQL execution plans, adding covering indexes, and introducing Redis caching with TTL-based invalidation across 12+ eligibility endpoints.' },
-          { metric: 'Stopped improper payouts', text: 'Prevented improper claim payments on terminated/ineligible members by hardening real-time eligibility checks and speeding 834 benefit-enrollment file processing across the 10M+ member platform, reducing financial leakage.' },
-          { metric: '−40% incidents', text: 'Cut critical incidents 40% and improved reliability 35% with circuit-breaker patterns and automated Postman regression suites across 20+ REST API contracts.' },
-          { metric: '20+ features', text: 'Shipped 20+ production Java Spring Boot features for high-volume insurance eligibility and transaction-processing workflows.' },
-        ],
-      },
-      {
-        title: 'Software Engineer Intern',
-        period: 'Apr 2022 – Sep 2022',
-        highlights: [
-          { metric: '$2M+/mo', text: 'Delivered end-to-end 5+ production eligibility features on a Java Spring Boot + MySQL platform serving 10M+ member records and $2M+/mo in policy transactions.' },
-          { metric: 'P0 caught', text: 'Caught and resolved same-day a coverage defect missed by 3 prior reviews by authoring JUnit/Mockito contract tests across 15+ edge cases, protecting 12K+ policyholders.' },
-          { metric: 'Onboarding 2d → 4h', text: 'Cut new-engineer onboarding from 2 days to 4 hours with reusable Angular workflows and setup/deployment runbooks.' },
+          { metric: '29M+ members', text: 'Modernized a 29M+ member insurance platform by rebuilding 6 legacy monolithic flows into distributed microservices, owning 30+ secured REST APIs serving 100K+ requests daily within SLA across eligibility, benefits, and coverage flows.' },
+          { metric: '−50%+ dev effort', text: "Cut 10+ teams' development effort 50%+ by consolidating duplicated legacy business logic into reusable, shared APIs." },
+          { metric: '−90% incidents · 80% caught', text: 'Cut production incidents ~90% and caught 80% of failures before they reached users by building Splunk and CloudWatch dashboards that track latency and error-rate SLIs against defined SLOs, improving MTTR through proactive alerting.' },
+          { metric: '600→210ms · 10–20ms cached', text: 'Cut API latency from ~600–800 ms to under 210 ms, and to 10–20 ms on cached reads via Redis, through database query tuning and multithreading.' },
+          { metric: 'Mentored 8 · TDD', text: 'Delivered dental, vision, and dependent coverage features for all policyholders, driving quality through test-driven development (TDD) while reviewing pull requests, setting engineering standards, and onboarding 8 new engineers.' },
+          { metric: '−1 hr/deploy · 40+ engineers', text: 'Cut deployment toil ~1 hour per change for 40+ engineers and enabled zero-downtime releases by reverse-engineering an undocumented legacy monolith into deployment runbooks and analysis docs that became the team reference.' },
+          { metric: '4 policyholder flows', text: 'Rebuilt 4 legacy policyholder flows in Angular and TypeScript, lazy loading each member eligibility, coverage, and dependents to render large nested payloads without lag, with secure JWT REST APIs and PDF generation.' },
         ],
       },
     ],

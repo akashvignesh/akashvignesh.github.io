@@ -65,13 +65,13 @@ export default function About() {
         {/* Bio */}
         <div className="about-bio">
           <p className={`about-bio-text about-bio-text--${themeClass}`}>
-            At <span className={`about-highlight about-highlight--${themeClass}`}>Guardian Life</span> I helped run a distributed insurance-eligibility platform serving 10M+ members,
-            cutting API p95 latency 455&nbsp;→&nbsp;120&nbsp;ms, tripling throughput, and halving MTTR (5d&nbsp;→&nbsp;2d) while mentoring 7 engineers.
-            The work I care about is the unglamorous kind: execution plans, caching, circuit breakers, and the tests that keep an eligibility check correct under real load.
+            At <span className={`about-highlight about-highlight--${themeClass}`}>Guardian Life</span> I helped modernize a 29M+ member insurance-eligibility platform,
+            rebuilding legacy monolithic flows into distributed microservices, cutting API latency from ~600&nbsp;→&nbsp;210&nbsp;ms (10&nbsp;→&nbsp;20&nbsp;ms on cached reads via Redis), and reducing production incidents ~90% while mentoring 8 engineers.
+            The work I care about is the unglamorous kind: query tuning, caching, observability with SLOs, and the tests that keep an eligibility check correct under real load.
           </p>
           <p className={`about-bio-text about-bio-text--${themeClass}`}>
             I recently completed my MS in Engineering Science (Data Science) at the University at Buffalo, where I now <span className={`about-highlight about-highlight--secondary about-highlight--secondary-${themeClass}`}>lead a small team</span> as a software engineer, building an internal research platform. Alongside it I&apos;m pushing deeper into <span className={`about-highlight about-highlight--secondary about-highlight--secondary-${themeClass}`}>ML &amp; AI</span>:
-            multimodal models, LLM agents, and end-to-end pipelines on AWS. What I enjoy most is the full path from a trained model to a service people actually call.
+            RAG systems, LLM agents, and end-to-end pipelines. What I enjoy most is the full path from a trained model to a service people actually call.
           </p>
         </div>
 
